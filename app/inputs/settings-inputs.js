@@ -1,7 +1,7 @@
 import gradient from 'gradient-string';
 import inquirer from 'inquirer';
 
-export default class Inputs {
+export default class SettingsInputs {
 	
 	playerName = '';
 	difficulty = 2;

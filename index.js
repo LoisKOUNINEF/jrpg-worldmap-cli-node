@@ -1,8 +1,6 @@
 #!/usr/bin/env node
-import Inputs from "./app/inputs.js";
-import Messages from "./app/messages.js";
-
-export const sleep = (ms = 1000) => new Promise((r) => setTimeout(r, ms));
+import Inputs from "./app/inputs/settings-inputs.js";
+import Messages from "./app/messages/default-messages.js";
 
 console.clear();
 

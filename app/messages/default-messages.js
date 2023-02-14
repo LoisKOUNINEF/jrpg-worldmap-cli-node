@@ -1,11 +1,11 @@
-import { sleep } from "../index.js";
+import { sleep } from "../../helpers/sleep.js";
 import chalk from "chalk";
 import gradient from "gradient-string";
 import chalkAnimation from 'chalk-animation';
 import figlet from "figlet";
 import { createSpinner } from "nanospinner";
 
-export default class Messages {
+export default class DefaultMessages {
 
 	async welcome() {
 	  const rainbowWelcome = chalkAnimation.rainbow(
