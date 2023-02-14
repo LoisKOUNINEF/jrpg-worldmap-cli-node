@@ -1,6 +1,6 @@
 import Player from '../players/player.js'
 import { sample } from "../../helpers/random.js";
-import { enemiesNames } from '../../helpers/enemies-names.js';
+import { enemiesNames } from '../players/enemies-names.js';
 import HumanPlayer from '../players/human-player.js';
 
 export default class SetupGame {

@@ -1,4 +1,3 @@
-import Messages from "../messages/default-messages.js";
 import { randomRange } from "../../helpers/random.js";
 
 export default class Player {
@@ -20,7 +19,7 @@ export default class Player {
 	getsDamaged(damage) {
 		this.lifePoints = this.lifePoints - damage;
 		if(this.lifePoints <= 0) {
-			
+
 		} 
 	}
 

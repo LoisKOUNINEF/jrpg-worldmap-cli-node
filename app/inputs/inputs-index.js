@@ -1,3 +1,4 @@
+import PlayerMessages from "../messages/player-messages.js";
 import GameInputs from "./game-inputs.js";
 import SettingsInputs from "./settings-inputs.js";
 
@@ -13,6 +14,7 @@ export async function getSettingsInputs() {
   return data;
 }
 
-export async function getGameInputs() {
-	
+export async function getGameInputs(player, enemies) {
+	PlayerMessages.playerMenu;
+	await gameInputs.getPlayerAction(player, enemies)
 }

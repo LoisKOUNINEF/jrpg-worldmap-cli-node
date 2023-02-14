@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import DefaultMessages from "./app/messages/default-messages.js";
-import { getSettingsInputs } from "./app/inputs/inputs-index.js";
+import { getSettingsInputs, getGameInputs } from "./app/inputs/inputs-index.js";
 import { initializeGame } from "./app/game/game-index.js";
 import PlayerMessages from "./app/messages/player-messages.js";
 
@@ -11,8 +11,9 @@ const playerMessages = new PlayerMessages;
 
 await messages.welcome()
 
-const inputs = await getSettingsInputs();
-const setupGame = await initializeGame(inputs.enemiesNumber, inputs.difficulty, inputs.playerName)
+const settingsInputs = await getSettingsInputs();
+const setupGame = await initializeGame(settingsInputs.enemiesNumber, settingsInputs.difficulty, settingsInputs.playerName)
+const gameInputs = await getGameInputs(settingsInputs.enemiesNumber, settingsInputs.playerName); 
 
 playerMessages.showEnemiesStatus(setupGame.enemies)
 playerMessages.attackEnemyMenu(setupGame.enemies)

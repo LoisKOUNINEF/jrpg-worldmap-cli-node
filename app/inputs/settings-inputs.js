@@ -1,6 +1,6 @@
 import gradient from 'gradient-string';
 import inquirer from 'inquirer';
-import { enemiesNames } from '../../helpers/enemies-names.js';
+import { enemiesNames } from '../players/enemies-names.js';
 
 export default class SettingsInputs {
 	
