@@ -1,6 +1,6 @@
-import Player from './players/player.js'
-import { sample } from "../helpers/random.js";
-import { enemiesNames } from '../helpers/enemies-names.js';
+import Player from '../players/player.js'
+import { sample } from "../../helpers/random.js";
+import { enemiesNames } from '../../helpers/enemies-names.js';
 
 export default class Game {
 	enemiesNames = enemiesNames;
