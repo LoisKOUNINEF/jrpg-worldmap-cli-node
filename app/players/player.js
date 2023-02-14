@@ -1,5 +1,5 @@
 import Messages from "../messages/default-messages.js";
-import randomRange from "../helpers/random.js";
+import { randomRange } from "../../helpers/random.js";
 
 export default class Player {
 	name;
@@ -9,7 +9,7 @@ export default class Player {
 	constructor(name, difficulty, message) {
 		this.name = name;
 		this.lifePoints = randomRange(10, 15) * difficulty;
-		this.weaponLevel = randomRange(1, 2) * difficulty;
+		this.weaponLevel = randomRange(1, (difficulty + 1)) + (difficulty / 2);
 		this.message = new Messages();
 	}
 
@@ -26,6 +26,6 @@ export default class Player {
 	}
 
 	computeDamage() {
-		randomInt(6)
+		randomRange(1, 6)
 	}
 } 

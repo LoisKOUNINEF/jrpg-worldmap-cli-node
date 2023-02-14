@@ -1,5 +1,6 @@
 import gradient from 'gradient-string';
 import inquirer from 'inquirer';
+import { enemiesNames } from '../../helpers/enemies-names.js';
 
 export default class SettingsInputs {
 	
@@ -35,6 +36,7 @@ export default class SettingsInputs {
 	}
 
 	async getEnemiesNumber() {
+		const maxEnemies = enemiesNames.length;
 		const answers = await inquirer.prompt({
 			name: 'enemiesNumber',
 			type: 'number',
@@ -43,6 +45,9 @@ export default class SettingsInputs {
 				return 2;
 			},
 		});
+		if(answers.enemiesNumber > maxEnemies) {
+			return this.enemiesNumber = maxEnemies;
+		}
 		return this.enemiesNumber = answers.enemiesNumber;
 	}
 	
