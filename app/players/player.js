@@ -5,7 +5,6 @@ export default class Player {
 	name;
 	lifePoints;
 	weaponLevel;
-	messages = new Messages();
 
 	constructor(name, difficulty) {
 		this.name = name;
@@ -21,7 +20,7 @@ export default class Player {
 	getsDamaged(damage) {
 		this.lifePoints = this.lifePoints - damage;
 		if(this.lifePoints <= 0) {
-			this.message.welcome()
+			
 		} 
 	}
 

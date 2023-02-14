@@ -3,7 +3,7 @@ import { sample } from "../../helpers/random.js";
 import { enemiesNames } from '../../helpers/enemies-names.js';
 import HumanPlayer from '../players/human-player.js';
 
-export default class Game {
+export default class SetupGame {
 	enemiesNames = enemiesNames;
 	randomName = Math.floor(Math.random() * this.enemiesNames.length);
 	enemies = [];
