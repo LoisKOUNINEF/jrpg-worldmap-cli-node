@@ -3,6 +3,11 @@ import inquirer from 'inquirer';
 
 export default class GameInputs {
 	constructor(player, enemies) {}
+	enemiesList = [];
+	populateEnemiesList(enemies) {for(let [i, enemy] of enemies.entries()) {enemiesList.push(i)}}
+
+	populateEnemiesList;
+
 	async getPlayerAction(player, enemies) {
 		const answers = await inquirer.prompt({
 			name: 'action',
@@ -35,14 +40,12 @@ export default class GameInputs {
 	}
 
 	async attackEnemy(enemies) {
-		const enemiesList = [];
-		for(let [i, enemy] of enemies.entries()) {enemiesList.push(i)}
 		
 		const answers = await inquirer.prompt({
 			name: 'attack',
 			type: 'list',
 			message: gradient.cristal('How hard will your journey be ?'),
-			choices: enemiesList,
+			choices: this.enemiesList,
 		});
 	}
 }
