@@ -1,11 +1,13 @@
 import Player from '../players/player.js'
 import { sample } from "../../helpers/random.js";
 import { enemiesNames } from '../../helpers/enemies-names.js';
+import HumanPlayer from '../players/human-player.js';
 
 export default class Game {
 	enemiesNames = enemiesNames;
 	randomName = Math.floor(Math.random() * this.enemiesNames.length);
 	enemies = [];
+	player;
 
 	async initializeEnemies(enemiesNumber, difficulty) {
 		for(let i = 0; i < enemiesNumber; i++) {
@@ -16,5 +18,9 @@ export default class Game {
 				.filter((name) => {return name !== enemyName}); 
 		}
 		return this.enemies;
+	}
+
+	async initializePlayer(name, difficulty) {
+		return this.player = new HumanPlayer(name, difficulty)
 	}
 }

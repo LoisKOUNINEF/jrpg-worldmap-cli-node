@@ -5,12 +5,12 @@ export default class Player {
 	name;
 	lifePoints;
 	weaponLevel;
+	messages = new Messages();
 
-	constructor(name, difficulty, message) {
+	constructor(name, difficulty) {
 		this.name = name;
 		this.lifePoints = randomRange(10, 15) * difficulty;
-		this.weaponLevel = randomRange(1, (difficulty + 1)) + (difficulty / 2);
-		this.message = new Messages();
+		this.weaponLevel = randomRange(1, difficulty) + Math.floor(difficulty / 2);
 	}
 
 	attacks(player) {
