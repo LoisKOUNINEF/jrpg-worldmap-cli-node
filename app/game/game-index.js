@@ -9,3 +9,4 @@ export async function initializeGame(enemiesNumber, difficulty, playerName) {
 	}
 	return data;
 }
+
