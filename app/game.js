@@ -12,8 +12,8 @@ export default class Game {
 			let enemyName = sample(this.enemiesNames);
 			let enemy = new Player(enemyName, difficulty)
 			this.enemies.push(enemy);
-			this.enemiesNames = this.enemiesNames.filter((name) => {return name !== enemyName})
-			console.log(this.enemiesNames) 
+			this.enemiesNames = this.enemiesNames
+				.filter((name) => {return name !== enemyName}); 
 		}
 		return this.enemies;
 	}
