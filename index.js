@@ -13,7 +13,7 @@ await messages.welcome()
 
 const settingsInputs = await getSettingsInputs();
 const setupGame = await initializeGame(settingsInputs.enemiesNumber, settingsInputs.difficulty, settingsInputs.playerName)
-const gameInputs = await getGameInputs(settingsInputs.enemiesNumber, settingsInputs.playerName); 
+const gameInputs = await getGameInputs(setupGame.player, setupGame.enemies); 
 
-playerMessages.showEnemiesStatus(setupGame.enemies)
-playerMessages.attackEnemyMenu(setupGame.enemies)
+// playerMessages.showEnemiesStatus(setupGame.enemies)
+// playerMessages.attackEnemyMenu(setupGame.enemies)
