@@ -8,28 +8,28 @@ export default class HumanPlayer extends Player {
 		this.weaponLevel = 1;
 	}
 
-	async searchWeapon() {
+	async searchWeapon(player) {
 		const weaponRandom = randomRange(1, 6)
-		if (this.weaponLevel > weaponRandom) {
-			this.weaponLevel = weaponRandom;
+		if (player.weaponLevel > weaponRandom) {
+			player.weaponLevel = weaponRandom;
 		} else {
 			return;
 		}
 	}
 
-	async searchMedkit() {
+	async searchMedkit(player) {
 		const medkit = randomRange(1, 6);
-		switch(medkit) {
-		case 1:
-			console.log('test1')
+		switch(true) {
+		case (medkit === 1):
+			console.log(player.lifePoints)
 			break;
-		case 1<medkit<6:
-			this.lifePoints += 50;
-			console.log('test2')
+		case (medkit > 1 && medkit < 6):
+			player.lifePoints += 50;
+			console.log(player.lifePoints)
 			break;
-		case 6:
-			console.log('test3')
-			this.lifePoints += 100;
+		case (medkit === 6):
+			player.lifePoints += 100;
+			console.log(player.lifePoints)
 			break;
 		default:
 			break;

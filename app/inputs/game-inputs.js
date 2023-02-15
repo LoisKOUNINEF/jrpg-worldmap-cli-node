@@ -28,10 +28,10 @@ export default class GameInputs {
 	async handlePlayerAction(player, enemies, action) {
 		switch(action) {
 		case 'a':
-			await this.player.searchWeapon();
+			await this.player.searchWeapon(player);
 			break;
 		case 'z':
-			await this.player.searchMedkit();
+			await this.player.searchMedkit(player);
 			break;
 		case 'e':
 			await this.attackEnemy(enemies);
