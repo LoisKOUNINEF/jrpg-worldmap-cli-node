@@ -3,15 +3,16 @@ import inquirer from 'inquirer';
 import HumanPlayer from '../players/human-player.js';
 
 export default class GameInputs {
+	player;
 	constructor(player, enemies) {
-		player = new HumanPlayer();
+		this.player = new HumanPlayer(player);
 	}
 
 	async getPlayerAction(player, enemies) {
 		const answers = await inquirer.prompt({
 			name: 'action',
 			type: 'list',
-			message: gradient.cristal(`What will you do this turn? ${enemies}`),
+			message: gradient.cristal(`What will you do this turn?`),
 			choices: [
 				'a',
 				'z',
@@ -24,10 +25,10 @@ export default class GameInputs {
 	async handlePlayerAction(player, enemies, action) {
 		switch(action) {
 		case 'a':
-			player.searchWeapon();
+			await this.player.searchWeapon();
 			break;
 		case 'z':
-			player.searchMedkit();
+			await this.player.searchMedkit();
 			break;
 		case 'e':
 			await this.attackEnemy(enemies);
