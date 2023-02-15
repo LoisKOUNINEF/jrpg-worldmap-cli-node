@@ -1,6 +1,9 @@
 import gradient from 'gradient-string';
 import inquirer from 'inquirer';
 import HumanPlayer from '../players/human-player.js';
+import PlayerMessages from "../messages/player-messages.js";
+
+const playerMessages = new PlayerMessages;
 
 export default class GameInputs {
 	player;
@@ -12,7 +15,7 @@ export default class GameInputs {
 		const answers = await inquirer.prompt({
 			name: 'action',
 			type: 'list',
-			message: gradient.cristal(`What will you do this turn?`),
+			message: playerMessages.playerMenu(player, enemies),
 			choices: [
 				'a',
 				'z',

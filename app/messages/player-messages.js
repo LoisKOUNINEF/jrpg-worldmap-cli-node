@@ -1,9 +1,9 @@
 export default class PlayerMessages {
 	playerMenu(player, enemies) {
-		console.log('What will you do this turn ?')
-		console.log('a - Look for a better weapon;')
-		console.log('z - Look for Medkits;')
-		console.log('e - Attack enemies on sight.')
+		console.log(`What will you do this turn ?
+		a - Look for a better weapon;'
+		z - Look for Medkits;'
+		e - Attack enemies on sight.`)
 	}
 
 	attackEnemyMenu(enemies) {
