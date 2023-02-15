@@ -21,15 +21,12 @@ export default class HumanPlayer extends Player {
 		const medkit = randomRange(1, 6);
 		switch(true) {
 		case (medkit === 1):
-			console.log(player.lifePoints)
 			break;
 		case (medkit > 1 && medkit < 6):
 			player.lifePoints += 50;
-			console.log(player.lifePoints)
 			break;
 		case (medkit === 6):
 			player.lifePoints += 100;
-			console.log(player.lifePoints)
 			break;
 		default:
 			break;

@@ -15,7 +15,10 @@ export default class SetupGame {
 			let enemy = new Player(enemyName, difficulty)
 			this.enemies.push(enemy);
 			this.enemiesNames = this.enemiesNames
-				.filter((name) => {return name !== enemyName}); 
+				.filter((name) => {
+					return name !== enemyName
+				}
+			); 
 		}
 		return this.enemies;
 	}
