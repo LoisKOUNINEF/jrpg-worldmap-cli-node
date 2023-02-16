@@ -2,6 +2,7 @@ import gradient from 'gradient-string';
 import inquirer from 'inquirer';
 import HumanPlayer from '../players/human-player.js';
 import PlayerMessages from "../messages/player-messages.js";
+import chalk from 'chalk';
 
 const playerMessages = new PlayerMessages;
 
@@ -37,7 +38,7 @@ export default class GameInputs {
 			await this.choseEnemyToAttack(enemies);
 			break;
 		default:
-			console.log('Bad move! You lost your turn.')
+			console.log(chalk.red('Bad move! You lost your turn.'))
 			break;
 		}
 	}
@@ -49,7 +50,7 @@ export default class GameInputs {
 		}
 		const enemiesOptionDisplay = enemiesListIndex
 			.map((enemy, index) => 
-				`${index+1} ${enemy.name} ${enemy.weaponLevel}`
+				gradient.fruit(`${index+1} ${enemy.name} ${enemy.weaponLevel}`)
 			)
 		return enemiesOptionDisplay
 	}
@@ -59,7 +60,7 @@ export default class GameInputs {
 		const answers = await inquirer.prompt({
 			name: 'attack',
 			type: 'list',
-			message: gradient.cristal('Which enemy would you like to attack ?'),
+			message: chalk.red('Which enemy would you like to attack ?'),
 			choices: choices,
 		});
 		return answers.attack;
