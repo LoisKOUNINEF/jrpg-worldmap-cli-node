@@ -11,19 +11,28 @@ export default class Player {
 		this.weaponLevel = randomRange(1, difficulty) + Math.floor(difficulty / 2);
 	}
 
-	attacks(player) {
-		damageTaken = this.computeDamage() * this.weaponLevel;
-		player.getsDamaged(damageTaken);
+	async attacks(player, enemyName, enemies) {
+		const enemy = await this.findEnemyByName(enemyName, enemies)
+		const damageTaken = this.computeDamage() * player.weaponLevel;
+		this.getsDamaged(enemy, damageTaken);
 	}
 
-	getsDamaged(damage) {
-		this.lifePoints = this.lifePoints - damage;
-		if(this.lifePoints <= 0) {
-
+	getsDamaged(enemy, damage) {
+		const enemyHP = enemy.lifePoints = enemy.lifePoints - damage;
+		if(enemy.lifePoints <= 0) {
+			return
 		} 
+		return enemyHP;
 	}
 
 	computeDamage() {
-		randomRange(1, 6)
+		return randomRange(1, 6)
+	}
+
+	findEnemyByName(name, enemies) {
+		const enemy = enemies.find(enemy => {
+			return enemy.name === name
+		});
+		return enemy;
 	}
 } 

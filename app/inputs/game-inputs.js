@@ -35,7 +35,7 @@ export default class GameInputs {
 			await this.player.searchMedkit(player);
 			break;
 		case 'e':
-			await this.choseEnemyToAttack(enemies);
+			await this.choseEnemyToAttack(player, enemies);
 			break;
 		default:
 			console.log(chalk.red('Bad move! You lost your turn.'))
@@ -44,18 +44,10 @@ export default class GameInputs {
 	}
 
 	getEnemiesList(enemies) {
-		const enemiesListIndex = [];
-		for(let enemy of enemies) {
-			enemiesListIndex.push(enemy)
-		}
-		const enemiesOptionDisplay = enemiesListIndex
-			.map((enemy, index) => 
-				gradient.fruit(`${index+1} ${enemy.name} ${enemy.weaponLevel}`)
-			)
-		return enemiesOptionDisplay
+		return enemies.map(enemy => enemy)
 	}
 
-	async choseEnemyToAttack(enemies) {
+	async choseEnemyToAttack(player, enemies) {
 		const choices = this.getEnemiesList(enemies)
 		const answers = await inquirer.prompt({
 			name: 'attack',
@@ -63,6 +55,7 @@ export default class GameInputs {
 			message: chalk.red('Which enemy would you like to attack ?'),
 			choices: choices,
 		});
-		return answers.attack;
+		const enemy = answers.attack;
+		return this.player.attacks(player, enemy, enemies);
 	}
 }
