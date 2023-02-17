@@ -1,25 +1,31 @@
 export default class GameLoop {
 
-	gamePlay(player, enemies) {
+	constructor(player, enemies) {
+		this.player = player;
+		this.enemies = enemies;
+	}
+
+	gamePlay() {
 		
 	}
 
-	isStillOngoing(player, enemies) {
+	isStillOngoing() {
 		while (
-			this.isPlayerAlive(player) && 
-			this.areEnemiesLeft(enemies)
+			this.isPlayerAlive(this.player) && 
+			this.areEnemiesLeft(this.enemies)
 			) {
-			this.gamePlay(player, enemies);
+			this.gamePlay();
 		}
 	}
 
 	isPlayerAlive(player) {
-		if (player.lifePoints > 0) {
+		if (this.player.lifePoints > 0) {
 			return true;
 		}
 	}
+	
 	areEnemiesLeft(enemies) {
-		if (enemies.length > 0) {
+		if (this.enemies.length > 0) {
 			return true;
 		}
 	}

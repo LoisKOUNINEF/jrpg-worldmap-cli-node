@@ -2,7 +2,6 @@ import GameInputs from "./game-inputs.js";
 import SettingsInputs from "./settings-inputs.js";
 import { setupGame } from "../../index.js";
 
-const gameInputs = new GameInputs();
 const settingsInputs = new SettingsInputs();
 
 export async function getSettingsInputs() {
@@ -15,6 +14,6 @@ export async function getSettingsInputs() {
 }
 
 export async function getGameInputs() {
-	const gameInputs = new GameInputs(setupGame.player, setupGame.enemies)
+	const gameInputs = new GameInputs(setupGame.player, setupGame.enemies);
 	await gameInputs.getPlayerAction()
 }

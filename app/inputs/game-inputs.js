@@ -1,6 +1,5 @@
 import gradient from 'gradient-string';
 import inquirer from 'inquirer';
-import HumanPlayer from '../players/human-player.js';
 import PlayerMessages from "../messages/player-messages.js";
 import chalk from 'chalk';
 
@@ -51,13 +50,12 @@ export default class GameInputs {
 	}
 
 	async choseEnemyToAttack() {
-		const choices = this.enemies
 		const messages = this.enemiesListMessage();
 		const answers = await inquirer.prompt({
 			name: 'attack',
 			type: 'list',
 			message: chalk.red(`Which enemy to attack ? ${messages}`),
-			choices: choices,
+			choices: this.enemies,
 		});
 		const enemy = answers.attack;
 		return this.player.attacks(this.player, enemy, this.enemies);
