@@ -15,5 +15,6 @@ export async function getSettingsInputs() {
 }
 
 export async function getGameInputs() {
-	await gameInputs.getPlayerAction(setupGame.player, setupGame.enemies)
+	const gameInputs = new GameInputs(setupGame.player, setupGame.enemies)
+	await gameInputs.getPlayerAction()
 }

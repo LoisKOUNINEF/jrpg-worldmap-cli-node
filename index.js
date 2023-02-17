@@ -13,4 +13,4 @@ export const settingsInputs = await getSettingsInputs();
 
 export const setupGame = await initializeGame();
 
-const gameInputs = await getGameInputs(); 
+export const gameInputs = await getGameInputs(); 

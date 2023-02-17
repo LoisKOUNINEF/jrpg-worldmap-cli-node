@@ -8,34 +8,38 @@ const playerMessages = new PlayerMessages;
 
 export default class GameInputs {
 	player;
+	enemies = []
 	constructor(player, enemies) {
-		this.player = new HumanPlayer(player);
+		this.player = player;
+		this.enemies = enemies;
 	}
 
-	async getPlayerAction(player, enemies) {
+	async getPlayerAction() {
+		console.log(this.player)
+		console.log(this.enemies)
 		const answers = await inquirer.prompt({
 			name: 'action',
 			type: 'list',
-			message: playerMessages.playerMenu(player, enemies),
+			message: playerMessages.playerMenu(this.player, this.enemies),
 			choices: [
 				'a',
 				'z',
 				'e',
 			],
 		});
-		return await this.handlePlayerAction(player, enemies, answers.action)
+		return await this.handlePlayerAction(answers.action)
 	}
 
-	async handlePlayerAction(player, enemies, action) {
+	async handlePlayerAction(action) {
 		switch(action) {
 		case 'a':
-			await this.player.searchWeapon(player);
+			await this.player.searchWeapon(this.player);
 			break;
 		case 'z':
-			await this.player.searchMedkit(player);
+			await this.player.searchMedkit(this.player);
 			break;
 		case 'e':
-			await this.choseEnemyToAttack(player, enemies);
+			await this.choseEnemyToAttack(this.player, this.enemies);
 			break;
 		default:
 			console.log(chalk.red('Bad move! You lost your turn.'))
@@ -43,19 +47,19 @@ export default class GameInputs {
 		}
 	}
 
-	mapEnemies(enemies) {
-		return enemies.map(enemy => enemy)
+	mapEnemies() {
+		return this.enemies.map(enemy => enemy)
 	}
 
-	enemiesListMessage(enemies) {
-		return enemies.map(enemy => `
+	enemiesListMessage() {
+		return this.enemies.map(enemy => `
   - ${enemy.name}, weapon level: ${enemy.weaponLevel}, HP: ${enemy.lifePoints}`
 		)
 	}
 
-	async choseEnemyToAttack(player, enemies) {
-		const choices = this.mapEnemies(enemies)
-		const messages = this.enemiesListMessage(enemies);
+	async choseEnemyToAttack() {
+		const choices = this.enemies
+		const messages = this.enemiesListMessage();
 		const answers = await inquirer.prompt({
 			name: 'attack',
 			type: 'list',
@@ -63,6 +67,6 @@ export default class GameInputs {
 			choices: choices,
 		});
 		const enemy = answers.attack;
-		return this.player.attacks(player, enemy, enemies);
+		return this.player.attacks(this.player, enemy, this.enemies);
 	}
 }
