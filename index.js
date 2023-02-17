@@ -9,12 +9,8 @@ const messages = new DefaultMessages;
 
 await messages.welcome()
 
-const settingsInputs = await getSettingsInputs();
-const setupGame = await initializeGame(
-	settingsInputs.enemiesNumber, 
-	settingsInputs.difficulty, settingsInputs.playerName
-	);
-const gameInputs = await getGameInputs(
-	setupGame.player, 
-	setupGame.enemies
-	); 
+export const settingsInputs = await getSettingsInputs();
+
+export const setupGame = await initializeGame();
+
+const gameInputs = await getGameInputs(); 
