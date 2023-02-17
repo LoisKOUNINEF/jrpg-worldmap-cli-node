@@ -43,16 +43,23 @@ export default class GameInputs {
 		}
 	}
 
-	getEnemiesList(enemies) {
+	mapEnemies(enemies) {
 		return enemies.map(enemy => enemy)
 	}
 
+	enemiesListMessage(enemies) {
+		return enemies.map(enemy => `
+  - ${enemy.name}, weapon level: ${enemy.weaponLevel}, HP: ${enemy.lifePoints}`
+		)
+	}
+
 	async choseEnemyToAttack(player, enemies) {
-		const choices = this.getEnemiesList(enemies)
+		const choices = this.mapEnemies(enemies)
+		const messages = this.enemiesListMessage(enemies);
 		const answers = await inquirer.prompt({
 			name: 'attack',
 			type: 'list',
-			message: chalk.red('Which enemy would you like to attack ?'),
+			message: chalk.red(`Which enemy to attack ? ${messages}`),
 			choices: choices,
 		});
 		const enemy = answers.attack;
