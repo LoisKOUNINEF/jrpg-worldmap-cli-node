@@ -7,16 +7,13 @@ import chalk from 'chalk';
 const playerMessages = new PlayerMessages;
 
 export default class GameInputs {
-	player;
-	enemies = []
+	
 	constructor(player, enemies) {
 		this.player = player;
 		this.enemies = enemies;
 	}
 
 	async getPlayerAction() {
-		console.log(this.player)
-		console.log(this.enemies)
 		const answers = await inquirer.prompt({
 			name: 'action',
 			type: 'list',
@@ -45,10 +42,6 @@ export default class GameInputs {
 			console.log(chalk.red('Bad move! You lost your turn.'))
 			break;
 		}
-	}
-
-	mapEnemies() {
-		return this.enemies.map(enemy => enemy)
 	}
 
 	enemiesListMessage() {
