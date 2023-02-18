@@ -1,5 +1,6 @@
 import gradient from "gradient-string";
 import { randomRange } from "../../helpers/random.js";
+import { critHit, miss } from "../messages/default-messages.js";
 
 export default class Player {
 	constructor(name, difficulty) {
@@ -30,10 +31,10 @@ export default class Player {
 		let damage = randomRange(1, 6);
 
 		if (damage === 6){
-			console.log(gradient.rainbow(`Crit Hit !`))
+			critHit();
 			return damage * 2;
 		} else if (damage === 1){
-			console.log(gradient.cristal('Miss !'))
+			miss();
 			return damage = 0;
 		}
 		

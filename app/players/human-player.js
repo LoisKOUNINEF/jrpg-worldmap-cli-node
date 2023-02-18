@@ -1,6 +1,7 @@
 import gradient from "gradient-string";
 import { randomRange } from "../../helpers/random.js";
 import { blankLine } from "../messages/default-messages.js";
+import { betterWeapon, largeHealthPack, nothingFound, regularHealthPack } from "../messages/human-player-messages.js";
 import Player from "./player.js";
 
 export default class HumanPlayer extends Player {
@@ -14,11 +15,8 @@ export default class HumanPlayer extends Player {
 		console.log(gradient.cristal(`${this.name} attacks ${enemyName}!`))
 
 		const enemy = await this.findEnemyByName(enemyName, enemies)
-		const damageTaken = this.computeDamage() * this.weaponLevel;
-
-		console.log(gradient.teen(`deals ${damageTaken} damage`))
-
-		return this.getsDamaged(enemy, damageTaken);
+		
+		return await this.attacks(enemy);
 	}
 
 	findEnemyByName(name, enemies) {
@@ -31,50 +29,28 @@ export default class HumanPlayer extends Player {
 	async searchWeapon() {
 		const weaponRandom = randomRange(1, 6)
 		if (this.weaponLevel < weaponRandom) {
-			blankLine();
-			console.log(
-				gradient.morning(`You found a level ${weaponRandom} weapon. Nice!`)
-			)
-			blankLine();
+			betterWeapon(weaponRandom);
 			return this.weaponLevel = weaponRandom;
 		} else {
-			blankLine();
-			console.log(
-				gradient.cristal(`You found a level ${weaponRandom} weapon. You keep your level ${this.weaponLevel} weapon.`)
-			)
-			blankLine();
+			nothingFound();
 			return;
 		}
 	}
 
 	async searchMedkit() {
 		const medkit = randomRange(1, 6);
-		switch(true) {
-		case (medkit === 1):
-			blankLine();
-			console.log(
-				gradient.cristal(`No luck, you didn't find anything.`)
-			)
-			blankLine();
-			break;
-		case (medkit > 1 && medkit < 6):
-			blankLine();
-			console.log(
-				gradient.morning(`You found a regular medkit. You gain 50 HP.`)
-			)
-			blankLine();
+		
+		if (medkit === 1) {
+			nothingFound();
+			return;
+		};
+		if (medkit > 1 && medkit < 6){
+			regularHealthPack();
 			return this.lifePoints += 50;
-			break;
-		case (medkit === 6):
-			blankLine();
-			console.log(
-				gradient.morning(`You found a regular medkit. You gain 100 HP.`)
-			)
-			blankLine();
+		};
+		if (medkit === 6){
+			largeHealthPack();
 			return this.lifePoints += 100;
-			break;
-		default:
-			break;
 		}
 	}
 

@@ -3,6 +3,7 @@ import GameMessages from "../messages/game-messages.js";
 import EnemyActions from "./enemy-actions.js";
 import { sleep } from '../../helpers/sleep.js'
 import { randomRange, sample } from "../../helpers/random.js";
+import { turnBegins } from "../messages/default-messages.js";
 
 export default class GameLoop {
 
@@ -13,7 +14,10 @@ export default class GameLoop {
 	}
 
 	async gamePlay() {
+		turnBegins();
+
 		this.fillActiveEnemiesArray();
+
 		const gameInputs = new GameInputs(this.player, this.activeEnemies);
 
 		await gameInputs.getPlayerAction();
@@ -58,14 +62,15 @@ export default class GameLoop {
 	}
 
 	removeDeadEnemies() {
-		return this.activeEnemies = this.activeEnemies.filter(enemy => enemy.lifePoints > 0);
+		return this.activeEnemies = 
+		this.activeEnemies.filter(enemy => enemy.lifePoints > 0);
 	}
 
 	async fillActiveEnemiesArray() {
 		if (this.activeEnemies.length === 0) {
 			return this.initalActiveEnemiesArray()
 		} else if (this.enemies.length === 0) {
-			return;
+			return this.activeEnemies;
 		}
     return this.refreshActiveEnemiesArray();
 	}
