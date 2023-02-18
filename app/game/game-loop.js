@@ -25,6 +25,8 @@ export default class GameLoop {
 		const enemyActions = new EnemyActions(this.player, this.activeEnemies);
 
 		await enemyActions.attackPlayer();
+
+		await sleep(2000);
 	}
 
 	async isStillOngoing() {

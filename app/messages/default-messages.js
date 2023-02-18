@@ -12,5 +12,12 @@ export async function welcome() {
 export function blankLine() {
  console.log(' ');
 }
-	
+
+export async function enemiesAttackMessage() {
+	const attack = chalkAnimation.karaoke(
+		'Enemies are about to attack !'
+		);
+	await sleep(2000)
+	attack.stop();
+}
 

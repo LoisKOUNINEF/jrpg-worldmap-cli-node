@@ -10,7 +10,9 @@ export default class Player {
 
 	async attacks(player) {
 		const damageTaken = this.computeDamage() * this.weaponLevel;
-		console.log(gradient.teen(`deals ${damageTaken} damage`))
+		if (damageTaken !== 0){
+			console.log(gradient.teen(`deals ${damageTaken} damage`));
+		};
 		this.getsDamaged(player, damageTaken);
 	}
 

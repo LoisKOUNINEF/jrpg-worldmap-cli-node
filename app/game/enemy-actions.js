@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { sleep } from '../../helpers/sleep.js'
+import { enemiesAttackMessage } from '../messages/default-messages.js'
 
 export default class EnemyActions {
 	constructor(player, enemies) {
@@ -8,10 +8,10 @@ export default class EnemyActions {
 	}
 
 	async attackPlayer() {
-		this.enemies.map(async(enemy) => {
+		await enemiesAttackMessage();
+		this.enemies.map((enemy) => {
 			console.log(chalk.red(`\n${enemy.name} attacks !`)), 
 			enemy.attacks(this.player)
-			await sleep(1000);
 		})
 	}
 }
