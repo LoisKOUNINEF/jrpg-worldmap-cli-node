@@ -7,6 +7,9 @@ export default class EnemyActions {
 	}
 
 	async attackPlayer() {
-		this.enemies.map((enemy) => {console.log(chalk.red(`${enemy.name} attacks !`)), enemy.attacks(this.player)})
+		this.enemies.map((enemy) => {
+			console.log(chalk.red(`${enemy.name} attacks !`)), 
+			enemy.attacks(this.player)
+		})
 	}
 }
