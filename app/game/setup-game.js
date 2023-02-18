@@ -4,8 +4,8 @@ import { enemiesNames } from '../players/enemies-names.js';
 import HumanPlayer from '../players/human-player.js';
 
 export default class SetupGame {
+	
 	enemiesNames = enemiesNames;
-	randomName = Math.floor(Math.random() * this.enemiesNames.length);
 	enemies = [];
 	player;
 

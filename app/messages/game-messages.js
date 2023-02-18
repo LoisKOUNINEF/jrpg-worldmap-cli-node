@@ -1,6 +1,10 @@
 import gradient from "gradient-string"
 
 export default class GameMessages {
+	constructor(player, enemies) {
+		this.player = player;
+		this.enemies = enemies;
+	}
 
 	gameOver(player, enemies) {
 		if (player.lifePoints > 0) {

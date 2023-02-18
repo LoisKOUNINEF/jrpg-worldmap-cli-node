@@ -1,21 +1,26 @@
+import { getGameInputs } from "../inputs/inputs-index.js";
+import GameMessages from "../messages/game-messages.js";
+
 export default class GameLoop {
 
 	constructor(player, enemies) {
 		this.player = player;
 		this.enemies = enemies;
+		this.gameMessages = new GameMessages(player, enemies)
 	}
 
-	gamePlay() {
-		
+	async gamePlay() {
+		await getGameInputs()
 	}
 
-	isStillOngoing() {
+	async isStillOngoing() {
 		while (
 			this.isPlayerAlive(this.player) && 
 			this.areEnemiesLeft(this.enemies)
 			) {
-			this.gamePlay();
+			await this.gamePlay();
 		}
+		this.gameMessages.gameOver();
 	}
 
 	isPlayerAlive(player) {

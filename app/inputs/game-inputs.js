@@ -3,20 +3,19 @@ import inquirer from 'inquirer';
 import PlayerMessages from "../messages/player-messages.js";
 import chalk from 'chalk';
 
-const playerMessages = new PlayerMessages;
-
 export default class GameInputs {
 	
-	constructor(player, enemies) {
+	constructor(player, enemies,playerMessages) {
 		this.player = player;
 		this.enemies = enemies;
+		this.playerMessages = new PlayerMessages(this.player, this.enemies);
 	}
 
 	async getPlayerAction() {
 		const answers = await inquirer.prompt({
 			name: 'action',
 			type: 'list',
-			message: playerMessages.playerMenu(this.player, this.enemies),
+			message: this.playerMessages.playerMenu(),
 			choices: [
 				'a',
 				'z',

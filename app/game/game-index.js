@@ -1,9 +1,11 @@
 import SetupGame from "./setup-game.js";
+import GameLoop from './game-loop.js'
 import { settingsInputs } from "../../index.js";
+import { initializeGame } from "../../index.js";
 
 const setupGame = new SetupGame();
 
-export async function initializeGame() {	
+export async function getInitializeGame() {	
 	const data = {
 		enemies: await setupGame.initializeEnemies(
 			settingsInputs.enemiesNumber, 
@@ -17,3 +19,10 @@ export async function initializeGame() {
 	return data;
 }
 
+export async function getGameLoop() {
+	const gameLoop = new GameLoop(
+		initializeGame.player, 
+		initializeGame.enemies
+	)
+	gameLoop.isStillOngoing();
+}
