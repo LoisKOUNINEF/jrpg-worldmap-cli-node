@@ -11,12 +11,14 @@ export default class GameLoop {
 
 	async gamePlay() {
 		const gameInputs = new GameInputs(this.player, this.enemies);
-		const enemyActions = new EnemyActions(this.player, this.enemies);
 
 		await gameInputs.getPlayerAction();
-		await enemyActions.attackPlayer();
+
+		this.removeDeadEnemies();
 		
-		this.enemies = this.enemies.filter(enemy => enemy.lifePoints > 0)
+		const enemyActions = new EnemyActions(this.player, this.enemies);
+
+		await enemyActions.attackPlayer();
 	}
 
 	async isStillOngoing() {
@@ -42,7 +44,7 @@ export default class GameLoop {
 		}
 	}
 
-	removeDeadEnemy(enemyName, enemies) {
-		return enemies.filter(enemy => enemy.name !== enemyName)
+	removeDeadEnemies() {
+		return this.enemies = this.enemies.filter(enemy => enemy.lifePoints > 0);
 	}
 }

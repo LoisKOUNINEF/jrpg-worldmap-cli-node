@@ -13,6 +13,7 @@ export default class HumanPlayer extends Player {
 		console.log(gradient.cristal(`${this.name} attacks ${enemyName}!`))
 		const enemy = await this.findEnemyByName(enemyName, enemies)
 		const damageTaken = this.computeDamage() * this.weaponLevel;
+		console.log(gradient.teen(`deals ${damageTaken} damage`))
 		return this.getsDamaged(enemy, damageTaken);
 	}
 
