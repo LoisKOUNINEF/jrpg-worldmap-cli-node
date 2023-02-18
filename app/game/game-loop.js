@@ -1,6 +1,8 @@
 import GameInputs from "../inputs/game-inputs.js";
 import GameMessages from "../messages/game-messages.js";
 import EnemyActions from "./enemy-actions.js";
+import { sleep } from '../../helpers/sleep.js'
+import { randomRange, sample } from "../../helpers/random.js";
 
 export default class GameLoop {
 
@@ -18,9 +20,11 @@ export default class GameLoop {
 
 		this.removeDeadEnemies();
 
-		const enemyActions = new EnemyActions(this.player, this.enemies);
+		const enemyActions = new EnemyActions(this.player, this.activeEnemies);
 
 		await enemyActions.attackPlayer();
+
+		await sleep();
 	}
 
 	async isStillOngoing() {
@@ -52,12 +56,18 @@ export default class GameLoop {
 
 	fillActiveEnemiesArray() {
 		const maxEnemies = this.activeEnemies.length;
-		if (maxEnemies === 4) {
-			return;
+		const enemiesIncoming = randomRange(1,4)
+		if (maxEnemies >= 4 || enemiesIncoming === 1) {
+			return this.activeEnemies;
 		}
-		this.enemies.slice(0 , (4 - maxEnemies)).map(enemy => this.activeEnemies.push(enemy))
-		return this.enemies = this.enemies.filter(enemy => 
-			this.activeEnemies.includes(enemy)
-		)
+
+		for(let i = 0; i < (enemiesIncoming - maxEnemies); i++) {
+      let enemy = sample(this.enemies);
+      this.activeEnemies.push(enemy);
+      this.enemies = this.enemies.filter(enemy =>
+        !this.activeEnemies.includes(enemy)
+      )
+    }
+    return this.activeEnemies;
 	}
 }
