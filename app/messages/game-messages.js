@@ -12,9 +12,14 @@ export default class GameMessages {
 		if (this.player.lifePoints > 0) {
 			this.winner();
 		} else {
-			const enemiesLeft = this.enemies.length + activeEnemies.length;
-			console.log(gradient.summer(`You lost. There are ${enemiesLeft} enemies left.`))
+			this.loser(activeEnemies);
 		}
+	}
+
+	loser(activeEnemies) {
+		const enemiesLeft = this.enemies.length + activeEnemies.length;
+			console.log(gradient.summer(`You lost. There are ${enemiesLeft} enemies left.`))
+			process.exit(0);
 	}
 
 	winner() {
