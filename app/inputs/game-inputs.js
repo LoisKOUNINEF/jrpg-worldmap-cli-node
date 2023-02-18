@@ -43,13 +43,11 @@ export default class GameInputs {
 	}
 
 	enemiesListMessage() {
-		return this.enemies.map(enemy => `
-  - ${enemy.name}, weapon level: ${enemy.weaponLevel}, HP: ${enemy.lifePoints}`
-		)
+		return this.playerMessages.showEnemiesStatus()
 	}
 
 	async choseEnemyToAttack() {
-		const messages = this.enemiesListMessage();
+		const messages = this.playerMessages.showEnemiesStatus();
 		const answers = await inquirer.prompt({
 			name: 'attack',
 			type: 'list',

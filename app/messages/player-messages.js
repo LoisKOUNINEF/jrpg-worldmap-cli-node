@@ -7,7 +7,7 @@ export default class PlayerMessages {
 	}
 
 	playerMenu() {
-		console.log(gradient.cristal(
+		console.log(gradient.teen(
 	  `What will you do this turn ?
 	a - Look for a better weapon (current lvl: ${this.player.weaponLevel})
 	z - Look for Medkits (current HPs: ${this.player.lifePoints})
@@ -15,14 +15,10 @@ export default class PlayerMessages {
 	))
 	}
 
-	showPlayerStatus() {
-		console.log(gradient.teen(`${this.player.name}`))
-	}
-
 	showEnemiesStatus() {
-		this.enemies.map(enemy =>
-			console.log(gradient.atlas(`${enemy.name}`))
+		return this.enemies.map(enemy => `
+  - ${enemy.name}, weapon level: ${enemy.weaponLevel}, HP: ${enemy.lifePoints}`
 		)
 	}
-	
+
 }
