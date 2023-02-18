@@ -1,3 +1,4 @@
+import gradient from "gradient-string";
 import { randomRange } from "../../helpers/random.js";
 import Player from "./player.js";
 
@@ -9,6 +10,7 @@ export default class HumanPlayer extends Player {
 	}
 
 	async attackEnemy(enemyName, enemies) {
+		console.log(gradient.cristal(`${this.name} attacks ${enemyName}!`))
 		const enemy = await this.findEnemyByName(enemyName, enemies)
 		const damageTaken = this.computeDamage() * this.weaponLevel;
 		return this.getsDamaged(enemy, damageTaken);

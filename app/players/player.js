@@ -21,12 +21,13 @@ export default class Player {
 	computeDamage() {
 		let damage = randomRange(1, 6)
 		if (damage === 6){
-			console.log(gradient.rainbow('Crit Hit !'))
+			console.log(gradient.rainbow(`Crit Hit ! deals ${damage} damage.`))
 			return damage * 2;
 		} else if (damage === 1){
 			console.log(gradient.cristal('Miss !'))
 			return damage = 0;
 		}
+		console.log(gradient.teen(`deals ${damage} damage`))
 		return damage;
 	}
 
