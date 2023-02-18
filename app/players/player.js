@@ -10,9 +10,11 @@ export default class Player {
 
 	async attacks(player) {
 		const damageTaken = this.computeDamage() * this.weaponLevel;
+
 		if (damageTaken !== 0){
 			console.log(gradient.teen(`deals ${damageTaken} damage`));
 		};
+
 		this.getsDamaged(player, damageTaken);
 	}
 
@@ -25,7 +27,8 @@ export default class Player {
 	}
 
 	computeDamage() {
-		let damage = randomRange(1, 6)
+		let damage = randomRange(1, 6);
+
 		if (damage === 6){
 			console.log(gradient.rainbow(`Crit Hit !`))
 			return damage * 2;
@@ -33,6 +36,7 @@ export default class Player {
 			console.log(gradient.cristal('Miss !'))
 			return damage = 0;
 		}
+		
 		return damage;
 	}
 

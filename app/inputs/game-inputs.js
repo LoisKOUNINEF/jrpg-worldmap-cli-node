@@ -52,4 +52,5 @@ export default class GameInputs {
 		const enemy = answers.attack;
 		await this.player.attackEnemy(enemy, this.enemies);
 	}
+	
 }

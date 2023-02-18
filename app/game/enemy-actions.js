@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { enemiesAttackMessage } from '../messages/default-messages.js'
+import { enemiesAttackMessage, blankLine } from '../messages/default-messages.js'
 
 export default class EnemyActions {
 	constructor(player, enemies) {
@@ -13,5 +13,7 @@ export default class EnemyActions {
 			console.log(chalk.red(`\n${enemy.name} attacks !`)), 
 			enemy.attacks(this.player)
 		})
+		blankLine();
 	}
+
 }

@@ -36,11 +36,12 @@ export default class GameLoop {
 			) {
 			await this.gamePlay();
 		}
+
 		const gameMessages = new GameMessages(
 			this.player, 
 			this.enemies, 
-			
 		);
+
 		gameMessages.gameOver(this.activeEnemies);
 	}
 
@@ -96,4 +97,5 @@ export default class GameLoop {
     }
     return this.activeEnemies;
 	}
+	
 }

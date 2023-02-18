@@ -9,13 +9,18 @@ export default class PlayerMessages {
 
 	playerMenu() {
 		blankLine();
-		console.log(gradient.mind(`Enemies facing you : ${this.showEnemiesStatus()}`))
+		console.log(
+			gradient.mind(`Enemies facing you : ${this.showEnemiesStatus()}`)
+		)
 		blankLine();
+		
 		console.log(gradient.teen(
 	  `What will you do this turn ?
 	Current weapon level: ${this.player.weaponLevel}
 	Current HPs: ${this.player.lifePoints}`
 		));
+
+		blankLine();
 	}
 
 	showEnemiesStatus() {

@@ -5,6 +5,7 @@ export async function welcome() {
 	const rainbowWelcome = chalkAnimation.rainbow(
 	  'Welcome to JRPG WorldMap in CLI \n'
 	  );
+
 	await sleep();
 	rainbowWelcome.stop();
 }
@@ -17,7 +18,7 @@ export async function enemiesAttackMessage() {
 	const attack = chalkAnimation.karaoke(
 		'Enemies are about to attack !'
 		);
+
 	await sleep(2000)
 	attack.stop();
 }
-
