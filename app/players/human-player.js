@@ -1,6 +1,6 @@
 import gradient from "gradient-string";
 import { randomRange } from "../../helpers/random.js";
-import { betterWeapon, largeHealthPack, nothingFound, regularHealthPack } from "../messages/human-player-messages.js";
+import { betterWeapon, largeMedkit, nothingFound, regularMedkit } from "../messages/human-player-messages.js";
 import Player from "./player.js";
 
 export default class HumanPlayer extends Player {
@@ -43,11 +43,11 @@ export default class HumanPlayer extends Player {
 			return;
 		};
 		if (medkit === 6){
-			largeHealthPack();
+			largeMedkit();
 			return this.lifePoints += 100;
 		};
 
-		regularHealthPack();
+		regularMedkit();
 		return this.lifePoints += 50;
 	}
 

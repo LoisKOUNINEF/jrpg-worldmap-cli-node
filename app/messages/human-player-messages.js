@@ -9,7 +9,7 @@ export function nothingFound() {
 	blankLine();
 }
 
-export function regularHealthPack() {
+export function regularMedkit() {
 	blankLine();
 	console.log(
 		gradient.morning(`You found a regular medkit. You gain 50 HP.`)
@@ -17,7 +17,7 @@ export function regularHealthPack() {
 	blankLine();
 }
 
-export function largeHealthPack() {
+export function largeMedkit() {
 	blankLine();
 	console.log(
 		gradient.morning(`You found a large medkit. You gain 100 HP.`)
