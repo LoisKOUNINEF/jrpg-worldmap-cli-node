@@ -6,11 +6,11 @@ export default class GameMessages {
 		this.enemies = enemies;
 	}
 
-	gameOver(player, enemies) {
-		if (player.lifePoints > 0) {
-			console.log(gradient.passion(`You won ${player.name}`))
+	gameOver() {
+		if (this.player.lifePoints > 0) {
+			console.log(gradient.passion(`You won ${this.player.name}`))
 		} else {
-			console.log(gradient.summer(`You lost. There are ${enemies.length} left.`))
+			console.log(gradient.summer(`You lost. There are ${this.enemies.length} left.`))
 		}
 	}
 }

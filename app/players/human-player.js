@@ -8,25 +8,38 @@ export default class HumanPlayer extends Player {
 		this.weaponLevel = 1;
 	}
 
-	async searchWeapon(player) {
+	async attackEnemy(enemyName, enemies) {
+		const enemy = await this.findEnemyByName(enemyName, enemies)
+		const damageTaken = this.computeDamage() * this.weaponLevel;
+		return this.getsDamaged(enemy, damageTaken);
+	}
+
+	findEnemyByName(name, enemies) {
+		const enemy = enemies.find(enemy => {
+			return enemy.name === name
+		});
+		return enemy;
+	}
+
+	async searchWeapon() {
 		const weaponRandom = randomRange(1, 6)
-		if (player.weaponLevel > weaponRandom) {
-			player.weaponLevel = weaponRandom;
+		if (this.weaponLevel < weaponRandom) {
+			return this.weaponLevel = weaponRandom;
 		} else {
 			return;
 		}
 	}
 
-	async searchMedkit(player) {
+	async searchMedkit() {
 		const medkit = randomRange(1, 6);
 		switch(true) {
 		case (medkit === 1):
 			break;
 		case (medkit > 1 && medkit < 6):
-			player.lifePoints += 50;
+			this.lifePoints += 50;
 			break;
 		case (medkit === 6):
-			player.lifePoints += 100;
+			this.lifePoints += 100;
 			break;
 		default:
 			break;

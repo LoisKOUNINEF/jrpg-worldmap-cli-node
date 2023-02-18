@@ -1,4 +1,4 @@
-import { getGameInputs } from "../inputs/inputs-index.js";
+import GameInputs from "../inputs/game-inputs.js";
 import GameMessages from "../messages/game-messages.js";
 
 export default class GameLoop {
@@ -6,32 +6,38 @@ export default class GameLoop {
 	constructor(player, enemies) {
 		this.player = player;
 		this.enemies = enemies;
-		this.gameMessages = new GameMessages(player, enemies)
 	}
 
 	async gamePlay() {
-		await getGameInputs()
+		const gameInputs = new GameInputs(this.player, this.enemies)
+		await gameInputs.getPlayerAction();
+		this.enemies = this.enemies.filter(enemy => enemy.lifePoints > 0)
 	}
 
 	async isStillOngoing() {
+		const gameMessages = new GameMessages(this.player, this.enemies);
 		while (
 			this.isPlayerAlive(this.player) && 
 			this.areEnemiesLeft(this.enemies)
 			) {
 			await this.gamePlay();
 		}
-		this.gameMessages.gameOver();
+		gameMessages.gameOver();
 	}
 
-	isPlayerAlive(player) {
+	isPlayerAlive() {
 		if (this.player.lifePoints > 0) {
 			return true;
 		}
 	}
 	
-	areEnemiesLeft(enemies) {
+	areEnemiesLeft() {
 		if (this.enemies.length > 0) {
 			return true;
 		}
+	}
+
+	removeDeadEnemy(enemyName, enemies) {
+		return enemies.filter(enemy => enemy.name !== enemyName)
 	}
 }

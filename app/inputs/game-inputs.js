@@ -28,13 +28,13 @@ export default class GameInputs {
 	async handlePlayerAction(action) {
 		switch(action) {
 		case 'a':
-			await this.player.searchWeapon(this.player);
+			await this.player.searchWeapon();
 			break;
 		case 'z':
-			await this.player.searchMedkit(this.player);
+			await this.player.searchMedkit();
 			break;
 		case 'e':
-			await this.choseEnemyToAttack(this.player, this.enemies);
+			await this.choseEnemyToAttack();
 			break;
 		default:
 			console.log(chalk.red('Bad move! You lost your turn.'))
@@ -57,6 +57,6 @@ export default class GameInputs {
 			choices: this.enemies,
 		});
 		const enemy = answers.attack;
-		return this.player.attacks(this.player, enemy, this.enemies);
+		await this.player.attackEnemy(enemy, this.enemies);
 	}
 }
