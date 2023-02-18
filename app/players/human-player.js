@@ -1,6 +1,5 @@
 import gradient from "gradient-string";
 import { randomRange } from "../../helpers/random.js";
-import { blankLine } from "../messages/default-messages.js";
 import { betterWeapon, largeHealthPack, nothingFound, regularHealthPack } from "../messages/human-player-messages.js";
 import Player from "./player.js";
 
@@ -31,10 +30,9 @@ export default class HumanPlayer extends Player {
 		if (this.weaponLevel < weaponRandom) {
 			betterWeapon(weaponRandom);
 			return this.weaponLevel = weaponRandom;
-		} else {
-			nothingFound();
-			return;
 		}
+		nothingFound();
+		return;
 	}
 
 	async searchMedkit() {
@@ -44,14 +42,13 @@ export default class HumanPlayer extends Player {
 			nothingFound();
 			return;
 		};
-		if (medkit > 1 && medkit < 6){
-			regularHealthPack();
-			return this.lifePoints += 50;
-		};
 		if (medkit === 6){
 			largeHealthPack();
 			return this.lifePoints += 100;
-		}
+		};
+
+		regularHealthPack();
+		return this.lifePoints += 50;
 	}
 
 }

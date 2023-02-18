@@ -1,3 +1,6 @@
+import gradient from "gradient-string";
+import { blankLine } from "./default-messages.js";
+
 export function nothingFound() {
 	blankLine();
 	console.log(
