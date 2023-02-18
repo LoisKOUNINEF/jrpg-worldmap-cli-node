@@ -4,4 +4,7 @@ export default class EnemyActions {
 		this.enemies = enemies;
 	}
 
+	async attackPlayer() {
+		this.enemies.map(enemy => enemy.attacks(this.player))
+	}
 }

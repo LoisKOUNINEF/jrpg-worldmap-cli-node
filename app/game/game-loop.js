@@ -1,5 +1,6 @@
 import GameInputs from "../inputs/game-inputs.js";
 import GameMessages from "../messages/game-messages.js";
+import EnemyActions from "./enemy-actions.js";
 
 export default class GameLoop {
 
@@ -9,8 +10,12 @@ export default class GameLoop {
 	}
 
 	async gamePlay() {
-		const gameInputs = new GameInputs(this.player, this.enemies)
+		const gameInputs = new GameInputs(this.player, this.enemies);
+		const enemyActions = new EnemyActions(this.player, this.enemies);
+
 		await gameInputs.getPlayerAction();
+		await enemyActions.attackPlayer();
+		
 		this.enemies = this.enemies.filter(enemy => enemy.lifePoints > 0)
 	}
 
