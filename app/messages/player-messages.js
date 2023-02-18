@@ -1,4 +1,5 @@
-import gradient from "gradient-string"
+import gradient from "gradient-string";
+import { blankLine } from "./default-messages.js";
 
 export default class PlayerMessages {
 	constructor(player, enemies) {
@@ -7,12 +8,14 @@ export default class PlayerMessages {
 	}
 
 	playerMenu() {
+		blankLine();
+		console.log(gradient.mind(`Enemies facing you : ${this.showEnemiesStatus()}`))
+		blankLine();
 		console.log(gradient.teen(
 	  `What will you do this turn ?
-	a - Look for a better weapon (current lvl: ${this.player.weaponLevel})
-	z - Look for Medkits (current HPs: ${this.player.lifePoints})
-	e - Attack enemies on sight`
-	))
+	Current weapon level: ${this.player.weaponLevel}
+	Current HPs: ${this.player.lifePoints}`
+		));
 	}
 
 	showEnemiesStatus() {

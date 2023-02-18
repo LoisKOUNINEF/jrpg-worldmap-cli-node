@@ -1,4 +1,3 @@
-import gradient from 'gradient-string';
 import inquirer from 'inquirer';
 import PlayerMessages from "../messages/player-messages.js";
 import chalk from 'chalk';
@@ -17,9 +16,9 @@ export default class GameInputs {
 			type: 'list',
 			message: this.playerMessages.playerMenu(),
 			choices: [
-				'a',
-				'z',
-				'e',
+				'Look for a better weapon',
+				'Look for health',
+				'Attack an enemy',
 			],
 		});
 		return await this.handlePlayerAction(answers.action)
@@ -40,10 +39,6 @@ export default class GameInputs {
 			console.log(chalk.red('Bad move! You lost your turn.'))
 			break;
 		}
-	}
-
-	enemiesListMessage() {
-		return this.playerMessages.showEnemiesStatus()
 	}
 
 	async choseEnemyToAttack() {

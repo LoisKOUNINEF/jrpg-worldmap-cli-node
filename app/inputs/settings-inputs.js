@@ -7,7 +7,7 @@ export default class SettingsInputs {
 	
 	playerName = '';
 	difficulty = 2;
-	enemiesNumber = 2;
+	enemiesNumber = 4;
 
 	async askName() {
 		const answers = await inquirer.prompt({
@@ -43,7 +43,7 @@ export default class SettingsInputs {
 			type: 'number',
 			message: chalk.red('How many enemies will you encounter on your journey ?'),
 			default() {
-				return 2;
+				return 4;
 			},
 		});
 		if(answers.enemiesNumber > maxEnemies) {

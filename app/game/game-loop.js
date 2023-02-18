@@ -20,22 +20,26 @@ export default class GameLoop {
 
 		this.removeDeadEnemies();
 
+		await sleep(2000);
+
 		const enemyActions = new EnemyActions(this.player, this.activeEnemies);
 
 		await enemyActions.attackPlayer();
-
-		await sleep();
 	}
 
 	async isStillOngoing() {
-		const gameMessages = new GameMessages(this.player, this.enemies);
 		while (
-			this.isPlayerAlive(this.player) && 
-			this.areEnemiesLeft(this.enemies)
+			this.isPlayerAlive() && 
+			this.areEnemiesLeft()
 			) {
 			await this.gamePlay();
 		}
-		gameMessages.gameOver();
+		const gameMessages = new GameMessages(
+			this.player, 
+			this.enemies, 
+			
+		);
+		gameMessages.gameOver(this.activeEnemies);
 	}
 
 	isPlayerAlive() {
@@ -45,7 +49,7 @@ export default class GameLoop {
 	}
 	
 	areEnemiesLeft() {
-		if (this.enemies.length > 0) {
+		if (this.enemies.length > 0 || this.activeEnemies.length > 0) {
 			return true;
 		}
 	}
@@ -54,7 +58,27 @@ export default class GameLoop {
 		return this.activeEnemies = this.activeEnemies.filter(enemy => enemy.lifePoints > 0);
 	}
 
-	fillActiveEnemiesArray() {
+	async fillActiveEnemiesArray() {
+		if (this.activeEnemies.length === 0) {
+			return this.initalActiveEnemiesArray()
+		} else if (this.enemies.length === 0) {
+			return;
+		}
+    return this.refreshActiveEnemiesArray();
+	}
+
+	initalActiveEnemiesArray() {
+		for(let i = 0; i < 4; i++) {
+      let enemy = sample(this.enemies);
+      this.activeEnemies.push(enemy);
+      this.enemies = this.enemies.filter(enemy =>
+        !this.activeEnemies.includes(enemy)
+      )
+    }
+    return this.activeEnemies;
+	}
+
+	refreshActiveEnemiesArray() {
 		const maxEnemies = this.activeEnemies.length;
 		const enemiesIncoming = randomRange(1,4)
 		if (maxEnemies >= 4 || enemiesIncoming === 1) {

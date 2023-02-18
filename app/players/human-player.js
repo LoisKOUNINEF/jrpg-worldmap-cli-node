@@ -27,8 +27,10 @@ export default class HumanPlayer extends Player {
 	async searchWeapon() {
 		const weaponRandom = randomRange(1, 6)
 		if (this.weaponLevel < weaponRandom) {
+			console.log(gradient.morning(`You found a level ${weaponRandom} weapon. Nice!`))
 			return this.weaponLevel = weaponRandom;
 		} else {
+			console.log(gradient.cristal(`You found a level ${weaponRandom} weapon. You keep your level ${this.weaponLevel} weapon.`))
 			return;
 		}
 	}
@@ -37,12 +39,15 @@ export default class HumanPlayer extends Player {
 		const medkit = randomRange(1, 6);
 		switch(true) {
 		case (medkit === 1):
+			console.log(gradient.cristal(`No luck, you didn't find anything.`))
 			break;
 		case (medkit > 1 && medkit < 6):
-			this.lifePoints += 50;
+			console.log(gradient.morning(`You found a regular medkit. You gain 50 HP.`))
+			return this.lifePoints += 50;
 			break;
 		case (medkit === 6):
-			this.lifePoints += 100;
+			console.log(gradient.morning(`You found a regular medkit. You gain 100 HP.`))
+			return this.lifePoints += 100;
 			break;
 		default:
 			break;

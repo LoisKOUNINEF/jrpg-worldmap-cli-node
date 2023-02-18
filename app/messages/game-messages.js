@@ -8,11 +8,12 @@ export default class GameMessages {
 		this.enemies = enemies;
 	}
 
-	gameOver() {
+	gameOver(activeEnemies) {
 		if (this.player.lifePoints > 0) {
 			this.winner();
 		} else {
-			console.log(gradient.summer(`You lost. There are ${this.enemies.length} enemies left.`))
+			const enemiesLeft = this.enemies.length + activeEnemies.length;
+			console.log(gradient.summer(`You lost. There are ${enemiesLeft} enemies left.`))
 		}
 	}
 
@@ -20,7 +21,6 @@ export default class GameMessages {
 	  console.clear();
 	  figlet(`Congrats ${this.player.name}!\n`, (err, data) => {
 	    console.log(gradient.pastel.multiline(data) + '\n');
-
 	    console.log(
 	      chalk.green(
 	        `Who needs graphics to enjoy such an amazing game ?`
