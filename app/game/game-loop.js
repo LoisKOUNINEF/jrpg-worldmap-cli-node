@@ -7,15 +7,17 @@ export default class GameLoop {
 	constructor(player, enemies) {
 		this.player = player;
 		this.enemies = enemies;
+		this.activeEnemies = [];
 	}
 
 	async gamePlay() {
-		const gameInputs = new GameInputs(this.player, this.enemies);
+		this.fillActiveEnemiesArray();
+		const gameInputs = new GameInputs(this.player, this.activeEnemies);
 
 		await gameInputs.getPlayerAction();
 
 		this.removeDeadEnemies();
-		
+
 		const enemyActions = new EnemyActions(this.player, this.enemies);
 
 		await enemyActions.attackPlayer();
@@ -45,6 +47,17 @@ export default class GameLoop {
 	}
 
 	removeDeadEnemies() {
-		return this.enemies = this.enemies.filter(enemy => enemy.lifePoints > 0);
+		return this.activeEnemies = this.activeEnemies.filter(enemy => enemy.lifePoints > 0);
+	}
+
+	fillActiveEnemiesArray() {
+		const maxEnemies = this.activeEnemies.length;
+		if (maxEnemies === 4) {
+			return;
+		}
+		this.enemies.slice(0 , (4 - maxEnemies)).map(enemy => this.activeEnemies.push(enemy))
+		return this.enemies = this.enemies.filter(enemy => 
+			this.activeEnemies.includes(enemy)
+		)
 	}
 }

@@ -5,7 +5,7 @@ import chalk from 'chalk';
 
 export default class GameInputs {
 	
-	constructor(player, enemies,playerMessages) {
+	constructor(player, enemies) {
 		this.player = player;
 		this.enemies = enemies;
 		this.playerMessages = new PlayerMessages(this.player, this.enemies);
