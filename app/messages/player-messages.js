@@ -30,3 +30,11 @@ export default class PlayerMessages {
 	}
 
 }
+
+export function damageDealt(damageTaken) {
+		console.log(gradient.teen(`deals ${damageTaken} damage`));
+	}
+
+	export function defeated(playerName) {			
+		console.log(gradient.cristal(`${playerName} has been defeated.`))
+}

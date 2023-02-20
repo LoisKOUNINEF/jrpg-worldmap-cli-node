@@ -1,6 +1,6 @@
-import gradient from "gradient-string";
 import { randomRange } from "../../helpers/random.js";
 import { critHit, miss } from "../messages/default-messages.js";
+import { damageDealt, defeated } from "../messages/player-messages.js";
 
 export default class Player {
 	constructor(name, difficulty) {
@@ -13,7 +13,7 @@ export default class Player {
 		const damageTaken = this.computeDamage() * this.weaponLevel;
 
 		if (damageTaken !== 0){
-			console.log(gradient.teen(`deals ${damageTaken} damage`));
+			damageDealt(damageTaken);
 		};
 
 		this.getsDamaged(player, damageTaken);
@@ -22,7 +22,7 @@ export default class Player {
 	getsDamaged(player, damage) {
 		const playerHP = player.lifePoints = player.lifePoints - damage;
 		if(playerHP <= 0) {
-			console.log(gradient.cristal(`${player.name} has been defeated.`))
+			defeated(player.name)
 		}
 		return playerHP;
 	}

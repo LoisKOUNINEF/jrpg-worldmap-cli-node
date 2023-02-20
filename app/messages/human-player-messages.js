@@ -32,3 +32,7 @@ export function betterWeapon(weaponRandom) {
 	)
 	blankLine();
 }
+
+export function enemyTargeted(playerName, enemyName) {
+	console.log(gradient.cristal(`${playerName} attacks ${enemyName}!`))
+}
