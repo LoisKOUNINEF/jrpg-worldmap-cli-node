@@ -25,11 +25,13 @@ export default class HumanPlayer extends Player {
 	}
 
 	async searchWeapon() {
-		const weaponRandom = randomRange(1, 6)
+		const weaponRandom = randomRange(1, 6);
+
 		if (this.weaponLevel < weaponRandom) {
 			betterWeapon(weaponRandom);
 			return this.weaponLevel = weaponRandom;
-		}
+		};
+
 		nothingFound();
 		return;
 	}

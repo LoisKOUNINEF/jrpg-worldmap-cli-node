@@ -4,10 +4,15 @@ import inquirer from 'inquirer';
 import { enemiesNames } from '../players/enemies-names.js';
 
 export default class SettingsInputs {
-	
-	playerName = '';
-	difficulty = 2;
-	enemiesNumber = 4;
+	constructor(
+		playerName,
+		difficulty,
+		enemiesNumber
+		) {
+		this.playerName = playerName;
+		this.difficulty = difficulty;
+		this.enemiesNumber = enemiesNumber;
+	}
 
 	async askName() {
 		const answers = await inquirer.prompt({
