@@ -18,8 +18,10 @@ export default class GameMessages {
 
 	loser(activeEnemies) {
 		const enemiesLeft = this.enemies.length + activeEnemies.length;
-			console.log(gradient.summer(`You lost. There are ${enemiesLeft} enemies left.`))
-			process.exit(0);
+		console.log(
+			gradient.summer(`You lost. There are ${enemiesLeft} enemies left.`)
+		);
+		process.exit(0);
 	}
 
 	winner() {

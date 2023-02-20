@@ -6,14 +6,14 @@ import chalk from "chalk";
 export async function welcome() {
 	const rainbowWelcome = chalkAnimation.rainbow(
 	  'Welcome to JRPG WorldMap in CLI \n'
-	  );
+	);
 
 	await sleep();
 	rainbowWelcome.stop();
 }
 
 export function blankLine() {
- console.log(' ');
+  console.log(' ');
 }
 
 export async function enemiesAttackMessage() {
