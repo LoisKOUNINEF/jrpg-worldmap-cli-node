@@ -1,6 +1,5 @@
-import chalk from 'chalk';
-import gradient from 'gradient-string';
 import inquirer from 'inquirer';
+import { requireDifficulty, requireEnemiesNumber, requireName } from '../messages/default-messages.js';
 import { enemiesNames } from '../players/enemies-names.js';
 
 export default class SettingsInputs {
@@ -18,7 +17,7 @@ export default class SettingsInputs {
 		const answers = await inquirer.prompt({
 			name: 'player_name',
 			type: 'input',
-			message: gradient.cristal('What will your player\'s name be?'),
+			message: requireName(),
 			default() {
 				return 'Player'
 			},
@@ -30,7 +29,7 @@ export default class SettingsInputs {
 		const answers = await inquirer.prompt({
 			name: 'difficulty',
 			type: 'list',
-			message: gradient.fruit('How hard will your journey be ?'),
+			message: requireDifficulty(),
 			choices: [
 				1,
 				2,
@@ -46,7 +45,7 @@ export default class SettingsInputs {
 		const answers = await inquirer.prompt({
 			name: 'enemiesNumber',
 			type: 'number',
-			message: chalk.red('How many enemies will you encounter on your journey ?'),
+			message: requireEnemiesNumber(),
 			default() {
 				return 4;
 			},

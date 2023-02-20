@@ -1,6 +1,5 @@
 import inquirer from 'inquirer';
-import PlayerMessages from "../messages/player-messages.js";
-import chalk from 'chalk';
+import PlayerMessages, { badMove, whichEnemy } from "../messages/player-messages.js";
 
 export default class GameInputs {
 	
@@ -36,7 +35,7 @@ export default class GameInputs {
 			await this.choseEnemyToAttack();
 			break;
 		default:
-			console.log(chalk.red('Bad move! You lost your turn.'))
+			badMove();
 			break;
 		}
 	}
@@ -46,7 +45,7 @@ export default class GameInputs {
 		const answers = await inquirer.prompt({
 			name: 'attack',
 			type: 'list',
-			message: chalk.red(`Which enemy to attack ? ${messages}`),
+			message: whichEnemy(messages),
 			choices: this.enemies,
 		});
 		const enemy = answers.attack;

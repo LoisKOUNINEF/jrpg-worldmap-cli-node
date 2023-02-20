@@ -1,5 +1,5 @@
-import chalk from "chalk";
 import { enemiesAttackMessage, blankLine } from '../messages/default-messages.js'
+import { enemyAttacks } from "../messages/player-messages.js";
 
 export default class EnemyActions {
 	constructor(player, enemies) {
@@ -10,7 +10,7 @@ export default class EnemyActions {
 	async attackPlayer() {
 		await enemiesAttackMessage();
 		this.enemies.map((enemy) => {
-			console.log(chalk.red(`\n${enemy.name} attacks !`)), 
+			enemyAttacks(enemy.name), 
 			enemy.attacks(this.player)
 		})
 		blankLine();

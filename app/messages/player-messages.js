@@ -1,5 +1,6 @@
 import gradient from "gradient-string";
 import { blankLine } from "./default-messages.js";
+import chalk from "chalk";
 
 export default class PlayerMessages {
 	constructor(player, enemies) {
@@ -35,6 +36,18 @@ export function damageDealt(damageTaken) {
 		console.log(gradient.teen(`deals ${damageTaken} damage`));
 	}
 
-	export function defeated(playerName) {			
+export function defeated(playerName) {			
 		console.log(gradient.cristal(`${playerName} has been defeated.`))
+}
+
+export function badMove() {			
+	console.log(chalk.red('Bad move! You lost your turn.'));
+}
+
+export function whichEnemy(messages) { 
+	console.log(chalk.red(`Which enemy to attack ? ${messages}`));
+}
+
+export function enemyAttacks(enemyName) {
+	console.log(chalk.red(`\n${enemyName} attacks !`));
 }

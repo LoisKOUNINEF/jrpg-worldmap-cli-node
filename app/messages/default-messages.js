@@ -1,6 +1,7 @@
 import { sleep } from "../../helpers/sleep.js";
 import chalkAnimation from 'chalk-animation';
 import gradient from "gradient-string";
+import chalk from "chalk";
 
 export async function welcome() {
 	const rainbowWelcome = chalkAnimation.rainbow(
@@ -34,4 +35,16 @@ export function critHit() {
 
 export function miss() {
 	console.log(gradient.cristal('Miss !'));
+}
+
+export function requireName() {
+	console.log(gradient.cristal('What will your player\'s name be?'));
+}
+
+export function requireDifficulty() {
+	console.log(gradient.fruit('How hard will your journey be ?'))
+}
+
+export function requireEnemiesNumber() {
+	console.log(chalk.red('How many enemies will you encounter on your journey ?'))
 }
