@@ -1,8 +1,8 @@
 import GameInputs from "../inputs/game-inputs.js";
 import GameMessages from "../messages/game-messages.js";
 import EnemyActions from "./enemy-actions.js";
-import { sleep } from '../../helpers/sleep.js'
-import { randomRange, sample } from "../../helpers/random.js";
+import { sleep } from '../helpers/sleep.js'
+import { randomRange, sample } from "../helpers/random.js";
 import { turnBegins } from "../messages/default-messages.js";
 
 export default class GameLoop {

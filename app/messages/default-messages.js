@@ -1,4 +1,4 @@
-import { sleep } from "../../helpers/sleep.js";
+import { sleep } from "../helpers/sleep.js";
 import chalkAnimation from 'chalk-animation';
 import gradient from "gradient-string";
 import chalk from "chalk";

@@ -1,4 +1,4 @@
-import { randomRange } from "../../helpers/random.js";
+import { randomRange } from "../helpers/random.js";
 import { betterWeapon, enemyTargeted, largeMedkit, nothingFound, regularMedkit } from "../messages/human-player-messages.js";
 import Player from "./player.js";
 

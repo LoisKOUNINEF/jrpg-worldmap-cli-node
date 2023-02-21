@@ -1,4 +1,4 @@
-import { randomRange } from "../../helpers/random.js";
+import { randomRange } from "../helpers/random.js";
 import { critHit, miss } from "../messages/default-messages.js";
 import { damageDealt, defeated } from "../messages/player-messages.js";
 
