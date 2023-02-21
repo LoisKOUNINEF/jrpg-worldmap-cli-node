@@ -1,12 +1,12 @@
 {
-	"name": "jrpg-worldmap-cli",
+	"name": "rpg-worldmap-cli",
 	"description": "CLI 'fighting' game.",
-	"version": "0.0.3",
+	"version": "0.0.1",
 	"license": "UNLICENSED",
 	"main": "index.js",
 	"type": "module",
 	"bin": {
-		"jrpg-worldmap-cli": "index.js"
+		"rpg-worldmap-cli": "index.js"
 	},
 	"author": {
 		"name": "Loïs",
@@ -14,7 +14,7 @@
 		"url": "https://loiskouninef.github.io/Portfolio/#/"
 	},
 	"keywords": [
-		"JRPG WorldMap CLI",
+		"RPG WorldMap CLI",
 		"Loïs"
 	],
 	"files": [
