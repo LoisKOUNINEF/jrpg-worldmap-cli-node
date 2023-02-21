@@ -40,12 +40,14 @@ export default class GameLoop {
 			) {
 			await this.gamePlay();
 		}
+		this.isGameOver();
+	}
 
+	isGameOver() {
 		const gameMessages = new GameMessages(
 			this.player, 
 			this.enemies, 
 		);
-
 		gameMessages.gameOver(this.activeEnemies);
 	}
 
@@ -89,6 +91,7 @@ export default class GameLoop {
 	refreshActiveEnemiesArray() {
 		const maxEnemies = this.activeEnemies.length;
 		const enemiesIncoming = randomRange(1,4)
+		
 		if (maxEnemies >= 4 || enemiesIncoming === 1) {
 			return this.activeEnemies;
 		}
