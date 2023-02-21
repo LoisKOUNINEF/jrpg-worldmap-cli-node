@@ -8,6 +8,10 @@ export default class EnemyActions {
 	}
 
 	async attackPlayer() {
+		if(this.enemies.length === 0) {
+			return;
+		}
+		
 		await enemiesAttackMessage();
 		this.enemies.map((enemy) => {
 			enemyAttacks(enemy.name), 
