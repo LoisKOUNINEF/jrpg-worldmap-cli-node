@@ -1,7 +1,7 @@
 import Player from '../players/player.js'
 import { sample } from "../helpers/random.js";
 import { enemiesNames } from '../players/enemies-names.js';
-import Monk from '../players/monk.js';
+import Priest from '../players/priest.js';
 import Warrior from '../players/warrior.js';
 
 export default class SetupGame {
@@ -25,8 +25,8 @@ export default class SetupGame {
 	}
 
 	async initializePlayer(playerClass, name, difficulty) {
-		if (playerClass === 'Monk') {
-			return this.player = new Monk(name, difficulty)
+		if (playerClass === 'Priest') {
+			return this.player = new Priest(name, difficulty)
 		}
 		return this.player = new Warrior(name, difficulty)
 	}

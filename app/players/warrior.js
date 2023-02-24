@@ -10,7 +10,7 @@ export default class Warrior extends HumanPlayer {
 	}
 
 	specialAttack(enemies) {
-		if (this.specialMeter >= 0) {
+		if (this.specialMeter >= 2) {
 				this.specialMeter -= 2;
 				this.computeDamage = this.computeSpecialDamage;
 				enemies.map(enemy => this.attacks(enemy))

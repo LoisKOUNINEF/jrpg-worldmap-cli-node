@@ -34,7 +34,7 @@ export default class SettingsInputs {
 			message: requireClass(),
 			choices: [
 				'Warrior',
-				'Monk'
+				'Priest'
 			],
 		});
 		return this.playerClass = answers.player_class;

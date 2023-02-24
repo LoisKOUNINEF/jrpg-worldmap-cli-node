@@ -49,5 +49,7 @@ export function specialDetails(spe) {
 	if (spe === 'Whirlwind') {
 		return `${spe}: deals weapon level based damage to all enemies in range.`
 	}
-	if (spe === 'Deflect') {}
+	if (spe === 'Mind Control') {
+		return `${spe}: each enemy attacks itself.`
+	}
 }
