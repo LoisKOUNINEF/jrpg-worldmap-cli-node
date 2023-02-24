@@ -1,6 +1,7 @@
 import gradient from "gradient-string";
 import { blankLine } from "./default-messages.js";
 import chalk from "chalk";
+import { specialDetails } from "./human-player-messages.js";
 
 export default class PlayerMessages {
 	constructor(player, enemies) {
@@ -19,7 +20,8 @@ export default class PlayerMessages {
 	  `What will you do this turn ?
 	Current weapon level: ${this.player.weaponLevel}
 	Current HPs: ${this.player.lifePoints}
-	Current armor level: ${this.player.armorLevel}`
+	Current armor level: ${this.player.armorLevel}
+	Special attack: ${specialDetails(this.player.spe)}`
 		));
 
 		blankLine();
@@ -33,8 +35,8 @@ export default class PlayerMessages {
 
 }
 
-export function damageTaken(damage) {
-	console.log(gradient.teen(`deals ${damage} damage`));
+export function damageTaken(name, damage) {
+	console.log(gradient.teen(`${name} takes ${damage} damage`));
 }
 
 export function defeated(playerName) {			

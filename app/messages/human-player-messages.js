@@ -44,3 +44,10 @@ export function armorFound(armor) {
 	)
 	blankLine();
 }
+
+export function specialDetails(spe) {
+	if (spe === 'Whirlwind') {
+		return `${spe}: deals weapon level based damage to all enemies in range.`
+	}
+	if (spe === 'Deflect') {}
+}

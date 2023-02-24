@@ -8,7 +8,7 @@ export default class EnemyActions {
 	}
 
 	async attackPlayer() {
-		if(this.enemies.length === 0) {
+		if(this.enemies.length === 0 || this.player.lifePoints <= 0) {
 			return;
 		}
 		

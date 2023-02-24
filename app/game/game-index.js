@@ -12,8 +12,8 @@ export async function getInitializeGame() {
 			settingsInputs.difficulty
 		),
 		player: await setupGame.initializePlayer(
-			settingsInputs.playerName, 
 			settingsInputs.playerClass,
+			settingsInputs.playerName, 
 			settingsInputs.difficulty
 		)
 	}

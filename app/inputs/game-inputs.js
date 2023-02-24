@@ -19,6 +19,7 @@ export default class GameInputs {
 				'Look for health',
 				'Look for armor',
 				'Attack an enemy',
+				`Use special (${this.player.spe})`
 			],
 		});
 		return await this.handlePlayerAction(answers.action)
@@ -37,6 +38,9 @@ export default class GameInputs {
 			break;
 		case 'Attack an enemy':
 			await this.attackEnemy();
+			break;
+		case `Use special (${this.player.spe})`:
+			await this.player.specialAttack(this.enemies);
 			break;
 		default:
 			badMove();

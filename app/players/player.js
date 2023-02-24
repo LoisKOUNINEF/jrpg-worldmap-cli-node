@@ -19,7 +19,7 @@ export default class Player {
 	getsDamaged(damage) {
 		const playerHP = this.lifePoints - damage;
 		if (damage !== 0){
-			damageTaken(damage);
+			damageTaken(this.name, damage);
 		};
 		if(playerHP <= 0) {
 			defeated(this.name)
