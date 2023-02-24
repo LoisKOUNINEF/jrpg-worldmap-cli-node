@@ -36,7 +36,7 @@ export default class GameInputs {
 			await this.player.searchArmor();
 			break;
 		case 'Attack an enemy':
-			await this.choseEnemyToAttack();
+			await this.attackEnemy();
 			break;
 		default:
 			badMove();
@@ -52,7 +52,11 @@ export default class GameInputs {
 			message: whichEnemy(messages),
 			choices: this.enemies,
 		});
-		const enemy = answers.attack;
+		return answers.attack;
+	}
+
+	async attackEnemy() {
+		const enemy = await this.choseEnemyToAttack()
 		await this.player.attackEnemy(enemy, this.enemies);
 	}
 	
