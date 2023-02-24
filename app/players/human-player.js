@@ -7,6 +7,7 @@ export default class HumanPlayer extends Player {
 		super (name);
 		this.lifePoints = 100 * difficulty;
 		this.weaponLevel = 1;
+		this.armorLevel = 0;
 	}
 
 	async attackEnemy(enemyName, enemies) {
@@ -50,6 +51,22 @@ export default class HumanPlayer extends Player {
 
 		regularMedkit();
 		return this.lifePoints += 50;
+	}
+
+	async searchArmor() {
+		const armor = randomRange(1,3);
+		return this.armorLevel = armor;
+	}
+
+	getsDamaged(damage) {
+		let mitigateDamage = damage - this.armorLevel;
+		if (mitigateDamage < 0) { mitigateDamage = 0 };
+
+		const playerHP = this.lifePoints - mitigateDamage;
+		if(playerHP <= 0) {
+			defeated(player.name)
+		}
+		return this.lifePoints = playerHP;
 	}
 
 }

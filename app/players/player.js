@@ -16,15 +16,15 @@ export default class Player {
 			damageDealt(damageTaken);
 		};
 
-		this.getsDamaged(player, damageTaken);
+		player.getsDamaged(damageTaken);
 	}
 
-	getsDamaged(player, damage) {
-		const playerHP = player.lifePoints = player.lifePoints - damage;
+	getsDamaged(damage) {
+		const playerHP = this.lifePoints - damage;
 		if(playerHP <= 0) {
 			defeated(player.name)
 		}
-		return playerHP;
+		return this.lifePoints = playerHP;
 	}
 
 	computeDamage() {
