@@ -4,6 +4,7 @@ import { damageTaken, defeated } from "../messages/player-messages.js";
 
 export default class Player {
 	constructor(name, difficulty) {
+		this.difficulty = difficulty;
 		this.name = name;
 		this.lifePoints = randomRange(10, 15) * difficulty;
 		this.weaponLevel = randomRange(1, difficulty) + Math.floor(difficulty / 2);

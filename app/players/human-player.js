@@ -12,7 +12,7 @@ import Player from "./player.js";
 
 export default class HumanPlayer extends Player {
 	constructor(name, difficulty) {
-		super (name);
+		super (name, difficulty);
 		this.lifePoints = 100 * difficulty;
 		this.weaponLevel = 1;
 		this.armorLevel = 0;
@@ -62,10 +62,15 @@ export default class HumanPlayer extends Player {
 	}
 
 	async searchArmor() {
-		if (randomRange(1,2) === 1) {
+		const headsOrTails = randomRange(1,2);
+		const maxArmorLevel = 2 + this.difficulty;
+			
+		const armor = randomRange(1,maxArmorLevel);
+
+		if (headsOrTails === 1 || armor < this.armorLevel) {
 			return nothingFound();
 		}
-		const armor = randomRange(1,3);
+
 		armorFound(armor);
 		return this.armorLevel = armor;
 	}
