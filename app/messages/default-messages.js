@@ -41,6 +41,10 @@ export function requireName() {
 	console.log(gradient.cristal('What will your player\'s name be?'));
 }
 
+export function requireClass() {
+	console.log(gradient.cristal('Which class do you want to chose?'));
+}
+
 export function requireDifficulty() {
 	console.log(gradient.fruit('How hard will your journey be ?'))
 }

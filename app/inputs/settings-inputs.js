@@ -1,14 +1,16 @@
 import inquirer from 'inquirer';
-import { requireDifficulty, requireEnemiesNumber, requireName } from '../messages/default-messages.js';
+import { requireDifficulty, requireEnemiesNumber, requireName, requireClass } from '../messages/default-messages.js';
 import { enemiesNames } from '../players/enemies-names.js';
 
 export default class SettingsInputs {
 	constructor(
 		playerName,
+		playerClass,
 		difficulty,
 		enemiesNumber
 		) {
 		this.playerName = playerName;
+		this.playerClass = playerClass;
 		this.difficulty = difficulty;
 		this.enemiesNumber = enemiesNumber;
 	}
@@ -24,6 +26,20 @@ export default class SettingsInputs {
 		});
 		return this.playerName = answers.player_name;
 	}
+
+	async askClass() {
+		const answers = await inquirer.prompt({
+			name: 'player_class',
+			type: 'list',
+			message: requireClass(),
+			choices: [
+				'Warrior',
+				'Monk'
+			],
+		});
+		return this.playerClass = answers.player_class;
+	}
+
 
 	async getDifficulty() {
 		const answers = await inquirer.prompt({
