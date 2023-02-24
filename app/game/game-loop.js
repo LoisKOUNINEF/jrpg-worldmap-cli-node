@@ -66,8 +66,10 @@ export default class GameLoop {
 	removeDeadEnemies() {
 		const aliveEnemies = 
 		this.activeEnemies.filter(enemy => enemy.lifePoints > 0);
+
 		const deadEnemies = this.activeEnemies.length - aliveEnemies.length;
 		this.fillSpecialMeter(deadEnemies);
+
 		return this.activeEnemies = aliveEnemies;
 	}
 
@@ -85,7 +87,9 @@ export default class GameLoop {
 	}
 
 	initalActiveEnemiesArray() {
-		for(let i = 0; i < 4; i++) {
+		let maxRange = 4;
+		if(this.enemies.length < 4) { maxRange = this.enemies.length}
+		for(let i = 0; i < maxRange; i++) {
       let enemy = sample(this.enemies);
       this.activeEnemies.push(enemy);
       this.enemies = this.enemies.filter(enemy =>

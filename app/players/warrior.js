@@ -10,7 +10,7 @@ export default class Warrior extends HumanPlayer {
 	}
 
 	specialAttack(enemies) {
-		if (this.specialMeter >= 2) {
+		if (this.specialMeter >= 0) {
 				this.specialMeter -= 2;
 				this.computeDamage = this.computeSpecialDamage;
 				enemies.map(enemy => this.attacks(enemy))
@@ -21,6 +21,8 @@ export default class Warrior extends HumanPlayer {
 
 	computeSpecialDamage() {
 		const randomDamage = randomRange(1,this.difficulty);
-		return this.weaponLevel + randomDamage;
+		const damage = this.weaponLevel + randomDamage;
+		console.log(damage)
+		return damage;
 	}
 }

@@ -11,7 +11,7 @@ export default class Player {
 	}
 
 	async attacks(player) {
-		const damageTaken = this.computeDamage() * this.weaponLevel;
+		const damageTaken = this.computeDamage();
 
 		player.getsDamaged(damageTaken);
 	}
@@ -32,13 +32,13 @@ export default class Player {
 
 		if (damage === 6){
 			critHit();
-			return damage * 1.5;
+			return damage * 1.5  * this.weaponLevel;
 		} else if (damage === 1){
 			miss();
 			return damage = 0;
 		}
 		
-		return damage;
+		return damage * this.weaponLevel;
 	}
 
 } 
