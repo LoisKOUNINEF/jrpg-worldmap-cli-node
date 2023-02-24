@@ -71,20 +71,24 @@ export default class HumanPlayer extends Player {
 	}
 
 	getsDamaged(damage) {
-		let mitigateDamage = damage - this.armorLevel;
+		const damageMitigated = this.mitigateDamage(damage);
 
-		if (mitigateDamage < 0) { 
-			mitigateDamage = 0; 
-		};
-		if (mitigateDamage !== 0){
-			damageTaken(mitigateDamage);
-		};
-
-		const playerHP = this.lifePoints - mitigateDamage;
+		const playerHP = this.lifePoints - damageMitigated;
 		if(playerHP <= 0) {
 			defeated(this.name);
 		}
 		return this.lifePoints = playerHP;
+	}
+
+	mitigateDamage(damage) {
+		let mitigateDamage = damage - this.armorLevel;
+		if (mitigateDamage < 0) { 
+			return mitigateDamage = 0; 
+		};
+		if (mitigateDamage !== 0){
+			damageTaken(mitigateDamage);
+		};
+		return mitigateDamage;
 	}
 
 }
