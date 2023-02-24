@@ -1,5 +1,13 @@
 import { randomRange } from "../helpers/random.js";
-import { betterWeapon, enemyTargeted, largeMedkit, nothingFound, regularMedkit } from "../messages/human-player-messages.js";
+import { damageTaken, defeated } from "../messages/player-messages.js";
+import { 
+	betterWeapon, 
+	enemyTargeted, 
+	largeMedkit, 
+	nothingFound, 
+	regularMedkit, 
+	armorFound 
+} from "../messages/human-player-messages.js";
 import Player from "./player.js";
 
 export default class HumanPlayer extends Player {
@@ -54,17 +62,27 @@ export default class HumanPlayer extends Player {
 	}
 
 	async searchArmor() {
+		if (randomRange(1,6) < 4) {
+			return nothingFound();
+		}
 		const armor = randomRange(1,3);
+		armorFound(armor);
 		return this.armorLevel = armor;
 	}
 
 	getsDamaged(damage) {
 		let mitigateDamage = damage - this.armorLevel;
-		if (mitigateDamage < 0) { mitigateDamage = 0 };
+
+		if (mitigateDamage < 0) { 
+			mitigateDamage = 0 
+		};
+		if (mitigateDamage !== 0){
+			damageTaken(mitigateDamage);
+		};
 
 		const playerHP = this.lifePoints - mitigateDamage;
 		if(playerHP <= 0) {
-			defeated(player.name)
+			defeated(this.name)
 		}
 		return this.lifePoints = playerHP;
 	}

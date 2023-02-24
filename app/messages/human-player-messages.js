@@ -36,3 +36,11 @@ export function betterWeapon(weaponRandom) {
 export function enemyTargeted(playerName, enemyName) {
 	console.log(gradient.cristal(`${playerName} attacks ${enemyName}!`))
 }
+
+export function armorFound(armor) {
+	blankLine();
+	console.log(
+		gradient.morning(`You found a level ${armor} armor. Nice!`)
+	)
+	blankLine();
+}

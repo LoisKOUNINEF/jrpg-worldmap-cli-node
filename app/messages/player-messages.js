@@ -18,7 +18,8 @@ export default class PlayerMessages {
 		console.log(gradient.teen(
 	  `What will you do this turn ?
 	Current weapon level: ${this.player.weaponLevel}
-	Current HPs: ${this.player.lifePoints}`
+	Current HPs: ${this.player.lifePoints}
+	Current armor level: ${this.player.armorLevel}`
 		));
 
 		blankLine();
@@ -32,8 +33,8 @@ export default class PlayerMessages {
 
 }
 
-export function damageDealt(damageTaken) {
-	console.log(gradient.teen(`deals ${damageTaken} damage`));
+export function damageTaken(damage) {
+	console.log(gradient.teen(`deals ${damage} damage`));
 }
 
 export function defeated(playerName) {			

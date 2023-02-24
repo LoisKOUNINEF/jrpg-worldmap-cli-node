@@ -17,6 +17,7 @@ export default class GameInputs {
 			choices: [
 				'Look for a better weapon',
 				'Look for health',
+				'Look for armor',
 				'Attack an enemy',
 			],
 		});
@@ -30,6 +31,9 @@ export default class GameInputs {
 			break;
 		case 'Look for health':
 			await this.player.searchMedkit();
+			break;
+		case 'Look for armor':
+			await this.player.searchArmor();
 			break;
 		case 'Attack an enemy':
 			await this.choseEnemyToAttack();

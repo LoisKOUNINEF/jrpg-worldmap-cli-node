@@ -1,6 +1,6 @@
 import { randomRange } from "../helpers/random.js";
 import { critHit, miss } from "../messages/default-messages.js";
-import { damageDealt, defeated } from "../messages/player-messages.js";
+import { damageTaken, defeated } from "../messages/player-messages.js";
 
 export default class Player {
 	constructor(name, difficulty) {
@@ -12,17 +12,16 @@ export default class Player {
 	async attacks(player) {
 		const damageTaken = this.computeDamage() * this.weaponLevel;
 
-		if (damageTaken !== 0){
-			damageDealt(damageTaken);
-		};
-
 		player.getsDamaged(damageTaken);
 	}
 
 	getsDamaged(damage) {
 		const playerHP = this.lifePoints - damage;
+		if (damage !== 0){
+			damageTaken(damage);
+		};
 		if(playerHP <= 0) {
-			defeated(player.name)
+			defeated(this.name)
 		}
 		return this.lifePoints = playerHP;
 	}
@@ -32,7 +31,7 @@ export default class Player {
 
 		if (damage === 6){
 			critHit();
-			return damage * 2;
+			return damage * 1.5;
 		} else if (damage === 1){
 			miss();
 			return damage = 0;
