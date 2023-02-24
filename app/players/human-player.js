@@ -62,7 +62,7 @@ export default class HumanPlayer extends Player {
 	}
 
 	async searchArmor() {
-		if (randomRange(1,6) < 4) {
+		if (randomRange(1,2) === 1) {
 			return nothingFound();
 		}
 		const armor = randomRange(1,3);
@@ -74,7 +74,7 @@ export default class HumanPlayer extends Player {
 		let mitigateDamage = damage - this.armorLevel;
 
 		if (mitigateDamage < 0) { 
-			mitigateDamage = 0 
+			mitigateDamage = 0; 
 		};
 		if (mitigateDamage !== 0){
 			damageTaken(mitigateDamage);
@@ -82,7 +82,7 @@ export default class HumanPlayer extends Player {
 
 		const playerHP = this.lifePoints - mitigateDamage;
 		if(playerHP <= 0) {
-			defeated(this.name)
+			defeated(this.name);
 		}
 		return this.lifePoints = playerHP;
 	}
