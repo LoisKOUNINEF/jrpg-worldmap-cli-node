@@ -94,9 +94,6 @@ export default class HumanPlayer extends Player {
 		if (mitigateDamage < 0) { 
 			return mitigateDamage = 0; 
 		};
-		if (mitigateDamage !== 0){
-			damageTaken(mitigateDamage);
-		};
 		return mitigateDamage;
 	}
 
