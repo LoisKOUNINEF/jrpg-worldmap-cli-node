@@ -16,6 +16,7 @@ export default class HumanPlayer extends Player {
 		this.lifePoints = 100 * difficulty;
 		this.weaponLevel = 1;
 		this.armorLevel = 0;
+		this.specialMeter = 0;
 	}
 
 	async attackEnemy(enemyName, enemies) {

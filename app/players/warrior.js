@@ -1,4 +1,5 @@
 import { randomRange } from '../helpers/random.js';
+import { badMove } from '../messages/player-messages.js';
 import HumanPlayer from './human-player.js'
 
 export default class Warrior extends HumanPlayer {
@@ -9,13 +10,16 @@ export default class Warrior extends HumanPlayer {
 	}
 
 	specialAttack(enemies) {
-		this.computeDamage = this.computeSpecialDamage;
-		enemies.map(enemy => this.attacks(enemy))
-		return this.computeDamage = this.computeDamage;
+		if (this.specialMeter >= 2) {
+				this.specialMeter -= 2;
+				this.computeDamage = this.computeSpecialDamage;
+				enemies.map(enemy => this.attacks(enemy))
+				return this.computeDamage = this.computeDamage;
+			}
+		return badMove()
 	}
 
 	computeSpecialDamage() {
-		console.log('special')
 		const randomDamage = randomRange(1,this.difficulty);
 		return this.weaponLevel + randomDamage;
 	}

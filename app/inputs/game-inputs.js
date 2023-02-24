@@ -15,10 +15,10 @@ export default class GameInputs {
 			type: 'list',
 			message: this.playerMessages.playerMenu(),
 			choices: [
+				'Attack an enemy',
 				'Look for a better weapon',
 				'Look for health',
 				'Look for armor',
-				'Attack an enemy',
 				`Use special (${this.player.spe})`
 			],
 		});
