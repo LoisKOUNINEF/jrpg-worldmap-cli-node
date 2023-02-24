@@ -1,7 +1,7 @@
 {
 	"name": "rpg-worldmap-cli",
 	"description": "CLI 'fighting' game.",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"license": "UNLICENSED",
 	"main": "index.js",
 	"type": "module",
