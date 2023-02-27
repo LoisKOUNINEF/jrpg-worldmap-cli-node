@@ -11,6 +11,9 @@ export async function getInitializeGame() {
 			settingsInputs.enemiesNumber, 
 			settingsInputs.difficulty
 		),
+		boss: await setupGame.initializeBoss(
+			settingsInputs.difficulty
+		),
 		player: await setupGame.initializePlayer(
 			settingsInputs.playerClass,
 			settingsInputs.playerName, 
@@ -23,7 +26,8 @@ export async function getInitializeGame() {
 export async function getGameLoop() {
 	const gameLoop = new GameLoop(
 		initializeGame.player, 
-		initializeGame.enemies
+		initializeGame.enemies,
+		initializeGame.boss
 	)
 	gameLoop.isStillOngoing();
 }

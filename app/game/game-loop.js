@@ -7,14 +7,16 @@ import { turnBegins } from "../messages/default-messages.js";
 
 export default class GameLoop {
 
-	constructor(player, enemies) {
+	constructor(player, enemies, boss) {
 		this.player = player;
 		this.enemies = enemies;
+		this.boss = boss;
 		this.activeEnemies = [];
 	}
 
 	async gamePlay() {
 		turnBegins();
+		console.log(this.boss)
 
 		this.fillActiveEnemiesArray();
 
@@ -36,7 +38,7 @@ export default class GameLoop {
 	async isStillOngoing() {
 		while (
 			this.isPlayerAlive() && 
-			this.areEnemiesLeft()
+			this.isBossAlive()
 			) {
 			await this.gamePlay();
 		}
@@ -55,6 +57,16 @@ export default class GameLoop {
 		if (this.player.lifePoints > 0) {
 			return true;
 		}
+	}
+
+	isBossAlive() {
+		if(this.areEnemiesLeft) {
+			return true;
+		}
+		if(!this.areEnemiesLeft) {
+			return this.activeEnemies.push(this.boss)
+		}
+		return false;
 	}
 	
 	areEnemiesLeft() {
