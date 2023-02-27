@@ -16,7 +16,6 @@ export default class GameLoop {
 
 	async gamePlay() {
 		turnBegins();
-		console.log(this.boss)
 
 		this.fillActiveEnemiesArray();
 
@@ -60,13 +59,9 @@ export default class GameLoop {
 	}
 
 	isBossAlive() {
-		if(this.areEnemiesLeft) {
+		if(this.areEnemiesLeft && this.boss.lifePoints > 0) {
 			return true;
 		}
-		if(!this.areEnemiesLeft) {
-			return this.activeEnemies.push(this.boss)
-		}
-		return false;
 	}
 	
 	areEnemiesLeft() {
@@ -90,7 +85,10 @@ export default class GameLoop {
 	}
 
 	async fillActiveEnemiesArray() {
-		if (this.activeEnemies.length === 0) {
+		if (!this.areEnemiesLeft()) {
+			this.activeEnemies.push(this.boss)
+			return this.activeEnemies;
+		} else if (this.activeEnemies.length === 0) {
 			return this.initalActiveEnemiesArray()
 		} else if (this.enemies.length === 0) {
 			return this.activeEnemies;
