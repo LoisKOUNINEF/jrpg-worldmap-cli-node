@@ -87,8 +87,8 @@ export default class GameLoop {
 	}
 
 	initalActiveEnemiesArray() {
-		let maxRange = 4;
-		if(this.enemies.length < 4) { maxRange = this.enemies.length}
+		let maxRange = 2;
+		if(this.enemies.length < 2) { maxRange = this.enemies.length}
 		for(let i = 0; i < maxRange; i++) {
       let enemy = sample(this.enemies);
       this.activeEnemies.push(enemy);

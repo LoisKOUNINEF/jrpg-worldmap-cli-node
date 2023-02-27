@@ -40,6 +40,10 @@ export default class GameInputs {
 			await this.attackEnemy();
 			break;
 		case `Use special (${this.player.spe})`:
+			if(this.player.spe === 'Backstab') {
+				await this.specialAttackEnemy();
+				break;
+			}
 			await this.player.specialAttack(this.enemies);
 			break;
 		default:
@@ -62,6 +66,11 @@ export default class GameInputs {
 	async attackEnemy() {
 		const enemy = await this.choseEnemyToAttack()
 		await this.player.attackEnemy(enemy, this.enemies);
+	}
+
+	async specialAttackEnemy() {
+		const enemy = await this.choseEnemyToAttack()
+		await this.player.specialAttack(enemy, this.enemies);
 	}
 	
 }

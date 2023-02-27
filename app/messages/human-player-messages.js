@@ -52,4 +52,7 @@ export function specialDetails(spe) {
 	if (spe === 'Mind Control') {
 		return `${spe}: each enemy attacks itself.`
 	}
+	if (spe === 'Backstab') {
+		return `${spe}: attacks targeted enemy with a guaranteed critical hit.`
+	}
 }

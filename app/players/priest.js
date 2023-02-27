@@ -3,13 +3,15 @@ import HumanPlayer from './human-player.js'
 
 export default class Priest extends HumanPlayer {
 	constructor(name, lifePoints, weaponLevel, armorLevel) {
-		super(name, lifePoints, weaponLevel, armorLevel)
-		this.spe = 'Mind Control'
+		super(name, lifePoints, weaponLevel, armorLevel);
+		this.armorLevel = 1;
+		this.spe = 'Mind Control';
+		this.specialRequired = 2;
 	}
 
 	specialAttack(enemies) {
-		if (this.specialMeter >= 2) {
-				this.specialMeter -= 2;
+		if (this.specialMeter >= this.specialRequired) {
+				this.specialMeter -= this.specialRequired;
 				return enemies.map(enemy => enemy.attacks(enemy))
 			}
 		return badMove()

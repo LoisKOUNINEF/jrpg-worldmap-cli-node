@@ -21,7 +21,7 @@ export default class PlayerMessages {
 	Current weapon level: ${this.player.weaponLevel}
 	Current HPs: ${this.player.lifePoints}
 	Current armor level: ${this.player.armorLevel}
-	Special attack: ${specialDetails(this.player.spe)}. Requires 2 charges to use (current: ${this.player.specialMeter})`
+	Special attack: ${specialDetails(this.player.spe)}. Requires ${this.player.specialRequired} charges to use (current: ${this.player.specialMeter})`
 		));
 
 		blankLine();

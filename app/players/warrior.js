@@ -4,14 +4,15 @@ import HumanPlayer from './human-player.js'
 
 export default class Warrior extends HumanPlayer {
 	constructor(name, lifePoints, weaponLevel, difficulty) {
-		super(name, lifePoints, weaponLevel, difficulty)
-		this.armorLevel = 1;
-		this.spe = 'Whirlwind'
+		super(name, lifePoints, weaponLevel, difficulty);
+		this.armorLevel = 3;
+		this.spe = 'Whirlwind';
+		this.specialRequired = 2;
 	}
 
 	specialAttack(enemies) {
-		if (this.specialMeter >= 2) {
-				this.specialMeter -= 2;
+		if (this.specialMeter >= this.specialRequired) {
+				this.specialMeter -= this.specialRequired;
 				this.computeDamage = this.computeSpecialDamage;
 				enemies.map(enemy => this.attacks(enemy))
 				return this.computeDamage = this.computeDamage;
@@ -22,7 +23,6 @@ export default class Warrior extends HumanPlayer {
 	computeSpecialDamage() {
 		const randomDamage = randomRange(1,this.difficulty);
 		const damage = this.weaponLevel + randomDamage;
-		console.log(damage)
 		return damage;
 	}
 }
