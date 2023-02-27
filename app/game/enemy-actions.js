@@ -30,8 +30,10 @@ export default class EnemyActions {
 		case 1:
 		case 2:
 		case 3:
-		case 4:
 		 boss.attacks(this.player)
+			break;
+		case 4:
+			boss.specialAbility()
 			break;
 		case 5: boss.searchWeapon()
 			break;

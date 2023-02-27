@@ -7,6 +7,7 @@ export default class Rogue extends HumanPlayer {
 		this.armorLevel = 2;
 		this.weaponLevel = 2;
 		this.spe = 'Backstab';
+		this.ability = 'Sharpened Blade';
 		this.specialRequired = 1;
 	}
 
@@ -20,8 +21,14 @@ export default class Rogue extends HumanPlayer {
 		return badMove()
 	}
 
+	specialAbility() {
+		this.weaponLevel += 1;
+		this.specialMeter += 1;
+	}
+
 	computeSpecialDamage() {
 		const damage = 9 * this.weaponLevel;
 		return damage;
 	}
+
 }

@@ -19,7 +19,8 @@ export default class GameInputs {
 				'Look for a better weapon',
 				'Look for health',
 				'Look for armor',
-				`Use special (${this.player.spe})`
+				`Use special attack (${this.player.spe})`,
+				`Use special ability (${this.player.ability})`
 			],
 		});
 		return await this.handlePlayerAction(answers.action)
@@ -39,12 +40,15 @@ export default class GameInputs {
 		case 'Attack an enemy':
 			await this.attackEnemy();
 			break;
-		case `Use special (${this.player.spe})`:
-			if(this.player.spe === 'Backstab') {
+		case `Use special attack (${this.player.spe})`:
+			if(this.singleTargetSpecial()) {
 				await this.specialAttackEnemy();
 				break;
 			}
 			await this.player.specialAttack(this.enemies);
+			break;
+		case `Use special ability (${this.player.ability})`:
+			await this.player.specialAbility();
 			break;
 		default:
 			badMove();
@@ -71,6 +75,12 @@ export default class GameInputs {
 	async specialAttackEnemy() {
 		const enemy = await this.choseEnemyToAttack()
 		await this.player.specialAttack(enemy, this.enemies);
+	}
+
+	singleTargetSpecial() {
+		if(this.player.spe === 'Backstab') {
+			return true;
+		}
 	}
 	
 }

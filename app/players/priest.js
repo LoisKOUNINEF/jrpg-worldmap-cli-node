@@ -6,6 +6,7 @@ export default class Priest extends HumanPlayer {
 		super(name, lifePoints, weaponLevel, armorLevel);
 		this.armorLevel = 1;
 		this.spe = 'Mind Control';
+		this.ability = 'Large Heal';
 		this.specialRequired = 2;
 	}
 
@@ -15,5 +16,9 @@ export default class Priest extends HumanPlayer {
 				return enemies.map(enemy => enemy.attacks(enemy))
 			}
 		return badMove()
+	}
+
+	specialAbility() {
+		return this.lifePoints += (50 * this.difficulty)
 	}
 }

@@ -7,6 +7,7 @@ export default class Warrior extends HumanPlayer {
 		super(name, lifePoints, weaponLevel, difficulty);
 		this.armorLevel = 3;
 		this.spe = 'Whirlwind';
+		this.ability = 'Forge'
 		this.specialRequired = 2;
 	}
 
@@ -18,6 +19,11 @@ export default class Warrior extends HumanPlayer {
 				return this.computeDamage = this.computeDamage;
 			}
 		return badMove()
+	}
+
+	specialAbility() {
+		this.armorLevel += 1;
+		this.specialMeter += 1;
 	}
 
 	computeSpecialDamage() {
