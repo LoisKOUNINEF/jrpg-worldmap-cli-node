@@ -8,6 +8,7 @@ export default class Priest extends HumanPlayer {
 		this.spe = 'Mind Control';
 		this.ability = 'Large Heal';
 		this.specialRequired = 2;
+		this.mana = 100;
 	}
 
 	specialAttack(enemies) {
@@ -19,6 +20,11 @@ export default class Priest extends HumanPlayer {
 	}
 
 	specialAbility() {
-		return this.lifePoints += (50 * this.difficulty)
+		if (this.mana < 40) {
+			return badMove();
+		};
+
+		this.mana -= 40;
+		return this.lifePoints += 100;
 	}
 }

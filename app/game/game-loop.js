@@ -81,6 +81,9 @@ export default class GameLoop {
 	}
 
 	fillSpecialMeter(deadEnemies) {
+		if(this.player.mana) {
+			this.player.mana += 5;
+		}
 		this.player.specialMeter += deadEnemies;
 	}
 
