@@ -81,7 +81,7 @@ export default class HumanPlayer extends Player {
 
 		const playerHP = this.lifePoints - damageMitigated;
 
-		if (damageMitigated !== 0){
+		if (damageMitigated > 0) {
 			damageTaken(this.name, damageMitigated);
 		};
 		if(playerHP <= 0) {
@@ -92,7 +92,7 @@ export default class HumanPlayer extends Player {
 
 	mitigateDamage(damage) {
 		let mitigateDamage = damage - this.armorLevel;
-		if (mitigateDamage < 0) {
+		if (mitigateDamage <= 0 && damage > 0) {
 			damageAbsorbed(this.name, damage)
 			return mitigateDamage = 0; 
 		};

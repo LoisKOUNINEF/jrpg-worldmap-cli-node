@@ -111,7 +111,13 @@ export default class GameLoop {
 
 	refreshActiveEnemiesArray() {
 		const maxEnemies = this.activeEnemies.length;
-		const enemiesIncoming = randomRange(1,4)
+		const maxRange = 4;
+
+		if(maxRange < this.enemies.length) { 
+			return this.initalActiveEnemiesArray()
+		};
+
+		const enemiesIncoming = randomRange(1,maxRange)
 		
 		if (maxEnemies >= 4 || enemiesIncoming === 1) {
 			return this.activeEnemies;
