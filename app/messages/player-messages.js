@@ -39,6 +39,10 @@ export function damageTaken(name, damage) {
 	console.log(gradient.teen(`${name} takes ${damage} damage`));
 }
 
+export function damageAbsorbed(name, damage) {
+	console.log(gradient.teen(`${name}s armor absorbs all ${damage} damage!`));
+}
+
 export function defeated(playerName) {			
 	console.log(gradient.cristal(`${playerName} has been defeated.`))
 }

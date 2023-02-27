@@ -1,5 +1,5 @@
 import { randomRange } from "../helpers/random.js";
-import { damageTaken, defeated } from "../messages/player-messages.js";
+import { damageAbsorbed, damageTaken, defeated } from "../messages/player-messages.js";
 import { 
 	betterWeapon, 
 	enemyTargeted, 
@@ -82,7 +82,7 @@ export default class HumanPlayer extends Player {
 		const playerHP = this.lifePoints - damageMitigated;
 
 		if (damageMitigated !== 0){
-			damageTaken(this.name, damage);
+			damageTaken(this.name, damageMitigated);
 		};
 		if(playerHP <= 0) {
 			defeated(this.name);
@@ -92,7 +92,8 @@ export default class HumanPlayer extends Player {
 
 	mitigateDamage(damage) {
 		let mitigateDamage = damage - this.armorLevel;
-		if (mitigateDamage < 0) { 
+		if (mitigateDamage < 0) {
+			damageAbsorbed(this.name, damage)
 			return mitigateDamage = 0; 
 		};
 		return mitigateDamage;
